@@ -1,18 +1,20 @@
-#
-# Simulates one jump from a simple stochastic SIS epidemic model
-#
-# Arguments:
-#   x    - a numeric vector: (time, S, I, R, N) at the previous jump.
-#   pars - a numeric vector: (alpha, pI, beta, gamma, pR).
-#
-# Returns:
-#   a numeric vector: (time, S, I, R, N) immediately after the next jump
-#
-# The numbers of susceptible and infected people and the population size
+
+#' Simulates one jump from a simple stochastic SIS epidemic model.
+#'
+#' \code{SIRjump} returns states of next jump given the states right now.
+#'
+#' @param x a numeric vector: (time, S, I, R, N) at the previous jump.
+#' @param pars a numeric vector: (alpha, pI, beta, gamma, pR).
+#' @return a numeric vector: (time, S, I, R, N) immediately after the next jump.
+#' @examples
+#' A <- c(0,1000,0,0,1000)
+#' B <- c(1,0.1,2,1,0.9)
+#' SIRjump(A,B)
+#' @importFrom ("stats", "rexp", "runif")
 
 
 SIRjump <- function (x, pars) {
-
+  # The numbers of susceptible and infected people and the population size
   St <- x[2]
   It <- x[3]
   Rt <- x[4]
