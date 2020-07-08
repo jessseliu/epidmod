@@ -19,7 +19,7 @@
 #' @return A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t, N_t) immediately after transition i - 1.
 #' @examples
 #' rSIR <- function(N0 = 1000, I0 = 0, S0 = N0 - I0, days = 100,pars = c(1, 0.1, 2, 1, 0.9))
-#' @importFrom("stats", "rexp", "runif")
+
 
 
 rSIR <- function(N0 , I0 , S0 = N0 - I0, R0, days, pars = c(alpha, pI, beta, pR, gamma) ) {
