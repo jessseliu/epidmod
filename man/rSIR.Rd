@@ -4,7 +4,7 @@
 \alias{rSIR}
 \title{Simulates from a simple stochastic SIR epidemic model.}
 \usage{
-rSIR(N0, I0, S0 = N0 - I0, R0, days, pars = c(alpha, pI, beta, pR, gamma))
+rSIR(N0, I0, S0 = N0 - I0, R0, days, pars = c(1, 0.1, 2, 1, 0.9))
 }
 \arguments{
 \item{N0}{an integer. The population size at time 0.}
@@ -18,16 +18,6 @@ rSIR(N0, I0, S0 = N0 - I0, R0, days, pars = c(alpha, pI, beta, pR, gamma))
 \item{days}{an integer. The number of days for which to simulate.}
 
 \item{pars}{a numeric vector: (alpha, pI, beta, pR, gamma).}
-
-\item{alpha}{rate of arrival of people into the population.}
-
-\item{pI}{probability that an arrival is infected.}
-
-\item{beta}{individual infection rate at time t is beta / Nt .}
-
-\item{gamma}{recovery rate for each infected individual.}
-
-\item{pR}{probability that an infected person is immune after recovery.}
 }
 \value{
 A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t, N_t) immediately after transition i - 1.
@@ -35,7 +25,13 @@ A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t
 \description{
 \code{rSIR} returns a matrix contains information about time, number of susceptible people, infected people,
 recover people, total number of people.
+ The meanings of parameters in pars are:
+ alpha represents rate of arrival of people into the population.
+ pI    represents probability that an arrival is infected.
+ beta  represents individual infection rate at time t is beta / Nt .
+ gamma represents recovery rate for each infected individual.
+ pR    represents probability that an infected person is immune after recovery.
 }
 \examples{
-rSIR <- function(N0 = 1000, I0 = 0, S0 = N0 - I0, days = 100,pars = c(1, 0.1, 2, 1, 0.9))
+rSIR <- function(N0 = 1000, I0 = 0, S0 = N0 - I0, days = 100,pars = c(1, 0.3, 4, 2, 0.7))
 }
