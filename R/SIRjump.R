@@ -1,7 +1,7 @@
 
 #' Simulates one jump from a simple stochastic SIS epidemic model.
 #'
-#' \code{SIRjump} returns states of next jump given the states right now.
+#' \code{SIRjump} returns states of next jump given the states right now in SIR model.
 #'
 #' @param x a numeric vector: (time, S, I, R, N) at the previous jump.
 #' @param pars a numeric vector: (alpha, pI, beta, gamma, pR).
@@ -10,7 +10,7 @@
 #' A <- c(0,1000,0,0,1000)
 #' B <- c(1,0.1,2,1,0.9)
 #' SIRjump(A,B)
-#' @importFrom ("stats", "rexp", "runif")
+
 
 
 SIRjump <- function (x, pars) {
