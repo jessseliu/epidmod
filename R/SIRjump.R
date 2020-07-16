@@ -20,19 +20,19 @@ SIRjump <- function (x, pars) {
   Rt <- x[4]
   Nt <- x[5]
   # The parameter values
-  alpha <- pars[1]
-  pI <- pars[2]
-  beta <- pars[3]
-  gamma <- pars[4]
-  pR <- pars[5]
+  a.rate <- pars[1]
+  i.rate <- pars[2]
+  r.rate <- pars[3]
+  pI <- pars[4]
+  pIm <- pars[5]
   # Simulate the time at which the next transition occurs
-  total_rate <- alpha + beta * St * It / Nt + gamma * It
+  total_rate <- a.rate + i.rate * St * It / Nt + r.rate * It
   x[1] <- x[1] + rexp(1, total_rate)
   # Jump probabilities
-  p1 <- alpha * pI / total_rate
-  p2 <- alpha * (1 - pI) / total_rate
-  p3 <- gamma * pR * It / total_rate
-  p4 <- gamma * (1 - pR) * It / total_rate
+  p1 <- a.rate * pI / total_rate
+  p2 <- a.rate * (1 - pI) / total_rate
+  p3 <- r.rate * pIm * It / total_rate
+  p4 <- r.rate * (1 - pIm) * It / total_rate
   u <- runif(1)
   if (u < p1) {
     # Arrival of a new infected person It increases by 1, Nt increases by 1
