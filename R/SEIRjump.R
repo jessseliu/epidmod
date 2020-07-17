@@ -1,17 +1,15 @@
 
 #' Simulates one jump from a simple stochastic SEIR epidemic model.
 #'
-#' \code{SIRjump} returns states of next jump given the states right now.
+#' \code{SEIRjump} returns states of next jump given the states right now.
 #'
 #' @param x a numeric vector: (time, S, E, I, R, N) at the previous jump.
 #' @param pars a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pIm).
 #' @return a numeric vector: (time, S, E, I, R, N) immediately after the next jump.
 #' @examples
 #' A <- c(0,1000,0,0,0,1000)
-#' B <- c(1,2,1,2,0.9,0.1)
+#' B <- c(5,2,4,1,0.9,0.1)
 #' SEIRjump(A,B)
-
-
 
 SEIRjump <- function (x, pars) {
   # The numbers of susceptible and infected people and the population size

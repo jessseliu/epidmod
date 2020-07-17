@@ -8,13 +8,11 @@
 #'
 #' @return a numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.
 #' @examples
-#' A <- c(0,1000,0,0,0,1000)
-#' B <- c(1,2,1,2,0.9, 0.3,0.1)
-#' SEIRjump(A,B)
+#' A <- c(0,1000,0,0,0,0,0,0,1000)
+#' B <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3,0.1)
+#' SEIQHRFjump(A,B)
 
-
-
-SEIRjump <- function (x, pars) {
+SEIQHRFjump <- function (x, pars) {
   # The numbers of susceptible and infected people and the population size
   St <- x[2]
   Et <- x[3]
