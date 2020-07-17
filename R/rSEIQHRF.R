@@ -19,7 +19,6 @@
 #' *\code{a.rate} represents rate of arrival of people into the population.
 #' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt .
 #' *\code{i.rate} represents individual infection rate at time t is beta / Nt .
-#' *\code{r.rate} represents recovery rate for each infected individual.
 #' *\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt
 #' *\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt
 #' *\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt
@@ -60,8 +59,12 @@ rSEIR <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0 ,
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St","Et", "It", "Qt", "Ht","Rt", "Ft", "Nt")
-  class(res) <- "SEIQHRF"
-  return(res)
+  output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
+                   Infected_people = res[,4], Quarantined_people = res[,4], Hostipalization_ppl = res[,5],
+                   Immune_people = res[,6], Fatality_case = res[,7], Total_people = res[,8])
+  class(output) <- "rSEIQHRF"
+  return(output)
+
 }
 
 

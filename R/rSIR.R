@@ -12,8 +12,8 @@
 #' @param days an integer. The number of days for which to simulate.
 #' @param pars a numeric vector: (a.rate, i.rate, r.rate, pI, pIm). Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
-#' *\code{i.rate} represents individual infection rate at time t is beta / Nt .
-#' *\code{r.rate} represents recovery rate for each infected individual.
+#' *\code{i.rate} represents individual infection rate at time t is i.rate / Nt .
+#' *\code{r.rate} represents recovery rate for each infected individual is r.rate / Nt.
 #' *\code{pI}     represents probability that an arrival is infected.
 #' *\code{pIm}    represents probability that an infected person is immune after recovery.
 
@@ -44,8 +44,10 @@ rSIR <- function(N0 = 1000 , I0 = 0  , R0 = 0, S0 = N0 - I0 - R0,  days = 100 , 
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St", "It", "Rt", "Nt")
-  class(res) <- "SIR"
-  return(res)
+  output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Infected_people = res[,3],
+                  Immune_people = res[,4], Total_people = res[,5])
+  class(output) <- "rSIR"
+  return(output)
 }
 
 

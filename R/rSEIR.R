@@ -47,8 +47,10 @@ rSEIR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, E0 = N0 - I0 - S0, days 
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St","Et", "It", "Rt", "Nt")
-  class(res) <- "SEIR"
-  return(res)
+  output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
+                   Infected_people = res[,4], Immune_people = res[,5], Total_people = res[,6])
+  class(output) <- "rSEIR"
+  return(output)
 }
 
 
