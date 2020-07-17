@@ -4,34 +4,40 @@
 \alias{rSIR}
 \title{Simulates from a simple stochastic SIR epidemic model.}
 \usage{
-rSIR(N0, I0, S0 = N0 - I0, R0, days, pars = c(1, 0.1, 2, 1, 0.9))
+rSIR(
+  N0 = 1000,
+  I0 = 0,
+  R0 = 0,
+  S0 = N0 - I0 - R0,
+  days = 100,
+  pars = c(1, 2, 1, 0.1, 0.9)
+)
 }
 \arguments{
 \item{N0}{an integer. The population size at time 0.}
 
 \item{I0}{an integer. The initial number of infected people.}
 
-\item{S0}{an integer. The initial number of susceptible people.}
-
 \item{R0}{an integer. The initial number of recovered people.}
+
+\item{S0}{an integer. The initial number of susceptible people.}
 
 \item{days}{an integer. The number of days for which to simulate.}
 
-\item{pars}{a numeric vector: (alpha, pI, beta, pR, gamma).}
+\item{pars}{a numeric vector: (a.rate, i.rate, r.rate, pI, pIm). Description about pars
+*\code{a.rate} represents rate of arrival of people into the population.
+*\code{i.rate} represents individual infection rate at time t is i.rate / Nt .
+*\code{r.rate} represents recovery rate for each infected individual is r.rate / Nt.
+*\code{pI}     represents probability that an arrival is infected.
+*\code{pIm}    represents probability that an infected person is immune after recovery.}
 }
 \value{
-A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t, N_t) immediately after transition i - 1.
+A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t, N_t) at time t.
 }
 \description{
 \code{rSIR} returns a matrix contains information about time, number of susceptible people, infected people,
 recover people, total number of people.
- The meanings of parameters in pars are:
- alpha represents rate of arrival of people into the population.
- pI    represents probability that an arrival is infected.
- beta  represents individual infection rate at time t is beta / Nt .
- gamma represents recovery rate for each infected individual.
- pR    represents probability that an infected person is immune after recovery.
 }
 \examples{
-rSIR <- function(N0 = 1000, I0 = 0, S0 = N0 - I0, days = 100,pars = c(1, 0.3, 4, 2, 0.7))
+rSIR <- function(N0 = 100, I0 = 0, S0 = N0 - I0, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
 }

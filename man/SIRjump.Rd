@@ -15,7 +15,7 @@ SIRjump(x, pars)
 a numeric vector: (time, S, I, R, N) immediately after the next jump.
 }
 \description{
-\code{SIRjump} returns states of next jump given the states right now.
+\code{SIRjump} returns states of next jump given the states right now in SIR model.
 }
 \examples{
 A <- c(0,1000,0,0,1000)

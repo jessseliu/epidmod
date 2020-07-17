@@ -7,6 +7,8 @@ Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line).
     URL: http://github.com/jesseliu/epidmod
     BugReports: http://github.com/jesseliu/epidmod/issues
+Imports:
+    stats
 License: undecided
 Encoding: UTF-8
 LazyData: true
