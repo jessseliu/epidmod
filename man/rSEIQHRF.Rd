@@ -14,7 +14,7 @@ rSEIQHRF(
   R0 = 0,
   F0 = N0 - S0 - E0 - I0 - Q0 - H0 - R0,
   days = 100,
-  pars = c(1, 0.1, 2, 2, 1, 0.9)
+  pars = c(10, 2, 1, 2, 1, 3, 1, 3, 1, 1, 0.9, 0.3, 0.4, 0.1)
 )
 }
 \arguments{
@@ -54,13 +54,14 @@ rSEIQHRF(
 *\code{pIm}  represents probability that an infected person is immune after recovery.}
 }
 \value{
-A numeric matrix with 9 columns.  Row i contains the values of (t, S_t, E_t, I_t, Q_t, R_t, H_t, R_t, F_t, N_t) at time t.
+A numeric matrix with 10 columns.  Row i contains the values of (t, S_t, E_t, I_t, Q_t, R_t, H_t, R_t, F_t, N_t) at time t.
 }
 \description{
 \code{rSEIQHRF} returns a matrix contains information about time, number of susceptible people, exposed people, infected people,
 recover people, total number of people.
 }
 \examples{
-rSEIQHRF(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1, days = 100,pars = c(1, 0.3, 4, 2, 2, 0.7))
+para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1)
+rSEIQHRF(N0 = 100, S0 = 99, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 100,pars = para )
 
 }

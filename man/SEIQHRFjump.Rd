@@ -19,6 +19,6 @@ a numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jum
 }
 \examples{
 A <- c(0,1000,0,0,0,0,0,0,1000)
-B <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3,0.1)
+B <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1)
 SEIQHRFjump(A,B)
 }

@@ -11,7 +11,7 @@ rSEIR(
   R0 = 0,
   E0 = N0 - I0 - S0,
   days = 100,
-  pars = c(3, 2, 2, 1, 0.9, 0.1)
+  pars = c(3, 2, 2, 1, 0.9, 0.3, 0.1)
 )
 }
 \arguments{
@@ -45,5 +45,5 @@ A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t
 recover people, total number of people.
 }
 \examples{
-rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100,pars = c(5, 4, 2, 2, 0.7, 0.1))
+rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100, pars = c(5, 4, 2, 2, 0.7, 0.3, 0.1))
 }
