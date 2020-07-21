@@ -9,7 +9,7 @@ SEIRjump(x, pars)
 \arguments{
 \item{x}{a numeric vector: (time, S, E, I, R, N) at the previous jump.}
 
-\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pIm).}
+\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).}
 }
 \value{
 a numeric vector: (time, S, E, I, R, N) immediately after the next jump.

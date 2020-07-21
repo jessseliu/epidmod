@@ -14,7 +14,7 @@
 #' @param R0 an integer. The initial number of recovered people.
 #' @param F0 an integer. The initial number of case fatality.
 #' @param days an integer. The number of days for which to simulate.
-#' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pQ, pIm).
+#' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pQ, pSR, pIm).
 #' #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
 #' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt .
@@ -28,6 +28,7 @@
 #' *\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t is f.rate / Nt
 #' *\code{pE}   represents probability that an arrival is exposed.
 #' *\code{pQ}   represents probability that a quarantined person recover is immune after recovery.
+#' *\code{pSR}  represents probability that an exposed individual self-recover and turns susceptible.
 #' *\code{pIm}  represents probability that an infected person is immune after recovery.
 
 #'
@@ -37,9 +38,7 @@
 #'
 #' @export
 
-
-
-rSEIQHRFR <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0 ,F0 = N0 - S0 - E0 - I0 - Q0 - H0 - R0,
+rSEIQHRF <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0 ,F0 = N0 - S0 - E0 - I0 - Q0 - H0 - R0,
                   days = 100 , pars = c(1, 0.1, 2, 2, 1, 0.9)) {
 
   if ( S0 + E0 + I0 + Q0 + H0 + R0 + F0 > N0) {

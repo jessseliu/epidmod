@@ -9,7 +9,7 @@ SEIQHRFjump(x, pars)
 \arguments{
 \item{x}{a numeric vector: (time, S, E, I, Q, H, R, F, N) at the previous jump.}
 
-\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pQ, pIm).}
+\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pQ, pSR, pIm).}
 }
 \value{
 a numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.

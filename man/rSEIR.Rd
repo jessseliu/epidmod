@@ -27,13 +27,14 @@ rSEIR(
 
 \item{days}{an integer. The number of days for which to simulate.}
 
-\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pIm).
+\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
 Description about pars
 *\code{a.rate} represents rate of arrival of people into the population.
 *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt .
 *\code{i.rate} represents individual infection rate at time t is beta / Nt .
 *\code{r.rate} represents recovery rate for each infected individual.
 *\code{pE}     represents probability that an arrival is exposed.
+*\code{pSR}    represents probability that an exposed individual self-recover and turns susceptible.
 *\code{pIm}    represents probability that an infected person is immune after recovery.}
 }
 \value{
