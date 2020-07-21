@@ -2,7 +2,7 @@
 
 #' Simulates from a simple stochastic SEIR epidemic model.
 #'
-#' \code{rSIR} returns a matrix contains information about time, number of susceptible people, exposed people, infected people,
+#' \code{rSEIR} returns a matrix contains information about time, number of susceptible people, exposed people, infected people,
 #' recover people, total number of people.
 #'
 #' @param N0 an integer. The population size at time 0.
@@ -22,7 +22,8 @@
 #'
 #' @return A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t, R_t, N_t) at time t.
 #' @examples
-#' rSEIR <- function(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = N0 - I0 - S0, days = 100,pars = c(5, 4, 2, 2, 0.7, 0.1))
+#' rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100,pars = c(5, 4, 2, 2, 0.7, 0.1))
+#' @export
 
 
 

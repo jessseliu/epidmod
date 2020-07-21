@@ -1,5 +1,5 @@
 
-#'export
+#'@export
 print.rSIR <- function(x,...){
 
 
@@ -9,7 +9,7 @@ print.rSIR <- function(x,...){
 
   cat("\n\nSimulation Summary")
   cat("\n-----------------------")
-  cat("\nNo. days :", x$Simulation_Time)
+  cat("\nNo. days :", x$Simulation_Time[nrow(x)])
   cat("\nNo. groups:", 3)
 
   cat("\n\nModel Parameters")
@@ -25,13 +25,13 @@ print.rSIR <- function(x,...){
   cat("\n-----------------------\n")
 
    for (i in 2:5) {
-    cat(names(x)[i], "=", x[i][nrow(res)])
+    cat(names(x)[i], "=", x[i][nrow(x)])
   }
 
   invisible(x)
 }
 
-#'export
+#'@export
 print.rSEIR <- function(x,...){
 
 
@@ -41,7 +41,7 @@ print.rSEIR <- function(x,...){
 
   cat("\n\nSimulation Summary")
   cat("\n-----------------------")
-  cat("\nNo. days :", x$Simulation_Time)
+  cat("\nNo. days :", x$Simulation_Time[nrow(x)])
   cat("\nNo. groups:", 4)
 
   cat("\n\nModel Parameters")
@@ -58,13 +58,13 @@ print.rSEIR <- function(x,...){
   cat("\n-----------------------\n")
 
   for (i in 2:7) {
-    cat(names(x)[i], "=", x[i][nrow(res)])
+    cat(names(x)[i], "=", x[i][nrow(x)])
   }
 
   invisible(x)
 }
 
-#'export
+#'@export
 print.rSEIQHRF <- function(x,...){
 
 
@@ -74,7 +74,7 @@ print.rSEIQHRF <- function(x,...){
 
   cat("\n\nSimulation Summary")
   cat("\n-----------------------")
-  cat("\nNo. days :", x$Simulation_Time)
+  cat("\nNo. days :", x$Simulation_Time[nrow(x)])
   cat("\nNo. groups:", 7)
 
   cat("\n\nModel Parameters")
@@ -98,7 +98,7 @@ print.rSEIQHRF <- function(x,...){
   cat("\n-----------------------\n")
 
   for (i in 2:10) {
-    cat(names(x)[i], "=", x[i][nrow(res)])
+    cat(names(x)[i], "=", x[i][nrow(x)])
   }
 
   invisible(x)

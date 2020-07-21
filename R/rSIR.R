@@ -19,7 +19,8 @@
 
 #' @return A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t, N_t) at time t.
 #' @examples
-#' rSIR <- function(N0 = 100, I0 = 0, S0 = N0 - I0, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
+#' rSIR (N0 = 100, I0 = 0, S0 = 100, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
+#' @export
 
 
 

@@ -10,6 +10,7 @@
 #' A <- c(0,1000,0,0,0,1000)
 #' B <- c(5,2,4,1,0.9,0.1)
 #' SEIRjump(A,B)
+#' @export
 
 SEIRjump <- function (x, pars) {
   # The numbers of susceptible and infected people and the population size

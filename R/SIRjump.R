@@ -10,6 +10,7 @@
 #' A <- c(0,1000,0,0,1000)
 #' B <- c(1,0.1,2,1,0.9)
 #' SIRjump(A,B)
+#' @export
 
 SIRjump <- function (x, pars) {
   # The numbers of susceptible and infected people and the population size

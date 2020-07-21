@@ -1,7 +1,7 @@
 
 #' Simulates one jump from a simple stochastic SEIQHRF epidemic model.
 #'
-#' \code{SIRjump} returns states of next jump given the states right now.
+#' \code{SEIQHRFjump} returns states of next jump given the states right now.
 #'
 #' @param x a numeric vector: (time, S, E, I, Q, H, R, F, N) at the previous jump.
 #' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pQ, pIm).
@@ -11,6 +11,7 @@
 #' A <- c(0,1000,0,0,0,0,0,0,1000)
 #' B <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3,0.1)
 #' SEIQHRFjump(A,B)
+#' @export
 
 SEIQHRFjump <- function (x, pars) {
   # The numbers of susceptible and infected people and the population size

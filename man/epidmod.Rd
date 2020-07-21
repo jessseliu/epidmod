@@ -8,7 +8,3 @@
 The epidmod package provides categories of important functions:
 rSIR
 }
-\section{epidmod functions}{
-
-}
-

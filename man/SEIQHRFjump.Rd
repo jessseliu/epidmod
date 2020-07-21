@@ -15,7 +15,7 @@ SEIQHRFjump(x, pars)
 a numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.
 }
 \description{
-\code{SIRjump} returns states of next jump given the states right now.
+\code{SEIQHRFjump} returns states of next jump given the states right now.
 }
 \examples{
 A <- c(0,1000,0,0,0,0,0,0,1000)

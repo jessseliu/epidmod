@@ -2,7 +2,7 @@
 
 #' Simulates from a simple stochastic SEIQHRF epidemic model.
 #'
-#' \code{rSIR} returns a matrix contains information about time, number of susceptible people, exposed people, infected people,
+#' \code{rSEIQHRF} returns a matrix contains information about time, number of susceptible people, exposed people, infected people,
 #' recover people, total number of people.
 #'
 #' @param N0 an integer. The population size at time 0
@@ -33,11 +33,13 @@
 #'
 #' @return A numeric matrix with 9 columns.  Row i contains the values of (t, S_t, E_t, I_t, Q_t, R_t, H_t, R_t, F_t, N_t) at time t.
 #' @examples
-#' rSEIR <- function(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = N0 - I0 - S0, days = 100,pars = c(1, 0.3, 4, 2, 2, 0.7))
+#' rSEIQHRF(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1, days = 100,pars = c(1, 0.3, 4, 2, 2, 0.7))
+#'
+#' @export
 
 
 
-rSEIR <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0 ,F0 = N0 - S0 - E0 - I0 - Q0 - H0 - R0,
+rSEIQHRFR <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0 ,F0 = N0 - S0 - E0 - I0 - Q0 - H0 - R0,
                   days = 100 , pars = c(1, 0.1, 2, 2, 1, 0.9)) {
 
   if ( S0 + E0 + I0 + Q0 + H0 + R0 + F0 > N0) {
