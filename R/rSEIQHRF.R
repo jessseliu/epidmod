@@ -18,7 +18,7 @@
 #' #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
 #' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt .
-#' *\code{i.rate} represents individual infection rate at time t is beta / Nt .
+#' *\code{i.rate} represents the incubation period is 1/i.rate days..
 #' *\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt
 #' *\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt
 #' *\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt

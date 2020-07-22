@@ -15,7 +15,7 @@
 #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
 #' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt .
-#' *\code{i.rate} represents individual infection rate at time t is beta / Nt .
+#' *\code{i.rate} represents the incubation period is 1/i.rate days.
 #' *\code{r.rate} represents recovery rate for each infected individual.
 #' *\code{pE}     represents probability that an arrival is exposed.
 #' *\code{pSR}    represents probability that an exposed individual self-recover and turns susceptible.
