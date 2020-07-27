@@ -14,9 +14,9 @@
 #' @param pars a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
 #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
-#' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt .
+#' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
 #' *\code{i.rate} represents the incubation period is 1/i.rate days.
-#' *\code{r.rate} represents recovery rate for each infected individual.
+#' *\code{r.rate} represents recovery time for each infected individual is 1/ r.rate.
 #' *\code{pE}     represents probability that an arrival is exposed.
 #' *\code{pSR}    represents probability that an exposed individual self-recover and turns susceptible.
 #' *\code{pIm}    represents probability that an infected person is immune after recovery.

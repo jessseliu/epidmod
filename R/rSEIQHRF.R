@@ -17,14 +17,14 @@
 #' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pQ, pSR, pIm).
 #' #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
-#' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt .
-#' *\code{i.rate} represents the incubation period is 1/i.rate days..
+#' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
+#' *\code{i.rate} represents the incubation period is 1/i.rate days.
 #' *\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt
 #' *\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt
 #' *\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt
-#' *\code{r1.rate}   represents recovery rate for each infected individual.
-#' *\code{r2.rate}   represents recovery rate for each individual who accepts hospitalization.
-#' *\code{r3.rate}   represents recovery rate for each individual who is self-quarantined.
+#' *\code{r1.rate}   represents recovery time for each infected individual is 1/ r1.rate.
+#' *\code{r2.rate}   represents recovery time for each individual who accepts hospitalization is 1/ r2.rate..
+#' *\code{r3.rate}   represents recovery time for each individual who is self-quarantined is is 1/ r3.rate..
 #' *\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t is f.rate / Nt
 #' *\code{pE}   represents probability that an arrival is exposed.
 #' *\code{pQ}   represents probability that a quarantined person recover is immune after recovery.

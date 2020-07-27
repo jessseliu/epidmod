@@ -29,7 +29,7 @@ SEIRjump <- function (x, pars) {
   pIm <- pars[7]
 
   # Simulate the time at which the next transition occurs
-  total_rate <- a.rate + e.rate * St * Et / Nt + i.rate * Et  + r.rate * It
+  total_rate <- a.rate + e.rate * St * It / Nt + i.rate * Et  + r.rate * It
   x[1] <- x[1] + rexp(1, total_rate)
   # Jump probabilities
   p1 <- a.rate * pE / total_rate
