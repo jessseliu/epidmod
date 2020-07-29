@@ -4,12 +4,12 @@
 #' \code{SEIQHRFjump} returns states of next jump given the states right now.
 #'
 #' @param x a numeric vector: (time, S, E, I, Q, H, R, F, N) at the previous jump.
-#' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pQ, pSR, pIm).
+#' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
 #'
 #' @return a numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.
 #' @examples
 #' A <- c(0,1000,0,0,0,0,0,0,1000)
-#' B <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1)
+#' B <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1,0.1)
 #' SEIQHRFjump(A,B)
 #' @export
 
@@ -35,9 +35,10 @@ SEIQHRFjump <- function (x, pars) {
   r3.rate <- pars[9]
   f.rate <- pars[10]
   pE <- pars[11]
-  pQ <- pars[12]
-  pSR <- pars[13]
-  pIm <- pars[14]
+  pSR <- pars[12]
+  pIim <- pars[13]
+  pQim <- pars[14]
+  pHim <- pars[15]
   # Simulate the time at which the next transition occurs
   total_rate <- a.rate + e.rate * St * It / Nt + i.rate * Et  + (q.rate + h1.rate + r1.rate) * It +
     (h2.rate + r3.rate) * Qt + (r2.rate + f.rate) * Ht
@@ -49,13 +50,14 @@ SEIQHRFjump <- function (x, pars) {
   p4 <- i.rate * (1 - pSR) * Et
   p5 <- q.rate * It
   p6 <- h1.rate * It
-  p7 <- r1.rate * It * pIm
-  p8 <- r1.rate * It * (1-pIm)
+  p7 <- r1.rate * It * pIim
+  p8 <- r1.rate * It * (1-pIim)
   p9 <- h2.rate * Qt
-  p10 <- r3.rate * Qt * pQ
-  p11 <- r3.rate * Qt * (1 - pQ)
-  p12 <- r2.rate * Ht
-  p13 <- f.rate * Ht
+  p10 <- r3.rate * Qt * pQim
+  p11 <- r3.rate * Qt * (1 - pQim)
+  p12 <- r2.rate * Ht * pHim
+  p13 <- r2.rate * Ht * (1 - pHim)
+  p14 <- f.rate * Ht
 
   u <- runif(1)
   if (u < p1) {
@@ -116,7 +118,12 @@ SEIQHRFjump <- function (x, pars) {
     x[6] <- x[6] - 1
     x[7] <- x[7] + 1
 
-  } else if (u < p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9 + p10 + p11 + p12 + p13){
+  } else if  (u < p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9 + p10 + p11 + p12 + p13){
+    # Person with hospitalization becomes susceptible: Ht decreases by 1, St increases by 1
+    x[6] <- x[6] - 1
+    x[2] <- x[2] + 1
+
+  } else if (u < p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9 + p10 + p11 + p12 + p13 + p14){
     # Person with hospitalization becomes case fatality: Ht decreases by 1, Ft increases by 1
     x[6] <- x[6] - 1
     x[8] <- x[8] + 1
