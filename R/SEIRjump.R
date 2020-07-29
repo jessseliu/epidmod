@@ -66,7 +66,7 @@ SEIRjump <- function (x, pars) {
     x[2] <- x[2] + 1
 
   } else if (u < p1 + p2 + p3 + p4 + p5 + p6) {
-    # Infection of a exposed: Et decreases by 1, Et increases by 1
+    # Infection of a exposed: Et decreases by 1, It increases by 1
     x[3] <- x[3] - 1
     x[4] <- x[4] + 1
 
