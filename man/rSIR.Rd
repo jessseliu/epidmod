@@ -27,7 +27,7 @@ rSIR(
 \item{pars}{a numeric vector: (a.rate, i.rate, r.rate, pI, pIm). Description about pars
 *\code{a.rate} represents rate of arrival of people into the population.
 *\code{i.rate} represents individual infection rate at time t is i.rate / Nt .
-*\code{r.rate} represents recovery rate for each infected individual is r.rate / Nt.
+*\code{r.rate} represents recovery time for each infected individual is 1/ r.rate.
 *\code{pI}     represents probability that an arrival is infected.
 *\code{pIm}    represents probability that an infected person is immune after recovery.}
 }

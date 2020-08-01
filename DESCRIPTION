@@ -1,6 +1,6 @@
 Package: epidmod
 Type: Package
-Title: epidmod(undecided)
+Title: epidmod
 Version: 0.1.0
 Author: Yingzhe Liu <jesseliu011@gmail.com> [aut, cre]
 Maintainer: The package maintainer <yourself@somewhere.net>
