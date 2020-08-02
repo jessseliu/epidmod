@@ -5,16 +5,16 @@
 #' \code{rSEIQHRF} returns a matrix contains information about time, number of susceptible people, exposed people, infected people,
 #' recover people, total number of people.
 #'
-#' @param N0 an integer. The population size at time 0
-#' @param S0 an integer. The initial number of susceptible people.
-#' @param E0 an integer. The initial number of exposed people.
-#' @param I0 an integer. The initial number of infected people.
-#' @param Q0 an integer. The initial number of quarantined people.
-#' @param H0 an integer. The initial number of people require hospitalization.
-#' @param R0 an integer. The initial number of recovered people.
-#' @param F0 an integer. The initial number of case fatality.
-#' @param days an integer. The number of days for which to simulate.
-#' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
+#' @param N0 An integer. The population size at time 0
+#' @param S0 An integer. The initial number of susceptible people.
+#' @param E0 An integer. The initial number of exposed people.
+#' @param I0 An integer. The initial number of infected people.
+#' @param Q0 An integer. The initial number of quarantined people.
+#' @param H0 An integer. The initial number of people require hospitalization.
+#' @param R0 An integer. The initial number of recovered people.
+#' @param F0 An integer. The initial number of case fatality.
+#' @param days An integer. The number of days for which to simulate.
+#' @param pars A numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
 #' #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
 #' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
@@ -37,7 +37,9 @@
 #' @return A numeric matrix with 10 columns.  Row i contains the values of (t, S_t, E_t, I_t, Q_t, H_t, R_t, F_t, N_t) at time t.
 #' @examples
 #' para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
-#' rSEIQHRF(N0 = 100, S0 = 99, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 100,pars = para )
+#' model1 <- rSEIQHRF(N0 = 100, S0 = 99, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 100,pars = para )
+#' model1
+#' print(model1)
 #'
 #' @export
 
@@ -76,10 +78,10 @@ rSEIQHRF <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 
 #'
 #' \code{SEIQHRFjump} returns states of next jump given the states right now.
 #'
-#' @param x a numeric vector: (time, S, E, I, Q, H, R, F, N) at the previous jump.
-#' @param pars a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
+#' @param x A numeric vector: (time, S, E, I, Q, H, R, F, N) at the previous jump.
+#' @param pars A numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
 #'
-#' @return a numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.
+#' @return A numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.
 #' @examples
 #' A <- c(0,1000,0,0,0,0,0,0,1000)
 #' B <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1,0.1)

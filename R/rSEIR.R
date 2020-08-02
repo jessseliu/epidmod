@@ -5,13 +5,13 @@
 #' \code{rSEIR} returns a matrix contains information about time, number of susceptible people, exposed people, infected people,
 #' recover people, total number of people.
 #'
-#' @param N0 an integer. The population size at time 0.
-#' @param I0 an integer. The initial number of infected people.
-#' @param S0 an integer. The initial number of susceptible people.
-#' @param R0 an integer. The initial number of recovered people.
-#' @param E0 an integer. The initial number of exposed people.
-#' @param days an integer. The number of days for which to simulate.
-#' @param pars a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
+#' @param N0 An integer. The population size at time 0.
+#' @param I0 An integer. The initial number of infected people.
+#' @param S0 An integer. The initial number of susceptible people.
+#' @param R0 An integer. The initial number of recovered people.
+#' @param E0 An integer. The initial number of exposed people.
+#' @param days An integer. The number of days for which to simulate.
+#' @param pars A numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
 #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
 #' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
@@ -23,7 +23,10 @@
 #'
 #' @return A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t, R_t, N_t) at time t.
 #' @examples
-#' rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100, pars = c(5, 4, 2, 2, 0.7, 0.3, 0.1))
+#' model1 <- rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100, pars = c(5, 4, 2, 2, 0.7, 0.3, 0.1))
+#' model1
+#' print(model1)
+#'
 #' @export
 
 
@@ -60,9 +63,9 @@ rSEIR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, E0 = N0 - I0 - S0, days 
 #'
 #' \code{SEIRjump} returns states of next jump given the states right now.
 #'
-#' @param x a numeric vector: (time, S, E, I, R, N) at the previous jump.
-#' @param pars a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
-#' @return a numeric vector: (time, S, E, I, R, N) immediately after the next jump.
+#' @param x A numeric vector: (time, S, E, I, R, N) at the previous jump.
+#' @param pars A numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
+#' @return A numeric vector: (time, S, E, I, R, N) immediately after the next jump.
 #' @examples
 #' A <- c(0,1000,0,0,0,1000)
 #' B <- c(5,2,4,1,0.9,0.1)
