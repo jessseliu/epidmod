@@ -12,6 +12,14 @@ print.rSIR <- function(x,...){
   cat("\nNo. days :", x$Simulation_Time[nrow(x)])
   cat("\nNo. groups:", 3)
 
+  i <- x$Infected_people
+  n <- x$Total_people
+  rate <- i/n
+
+  cat("\n Biggest infection rate is ", max(rate))
+  cat("\n Time to the biggest infection rate is ", which(rate == max(rate))[1])
+
+
   cat("\n\nModel Parameters")
   cat("\n-----------------------\n")
 
@@ -31,6 +39,41 @@ print.rSIR <- function(x,...){
   invisible(x)
 }
 
+
+#'@export
+#To find the close value in a vector
+close <- function(x, value, tol=NULL){
+  if(!is.null(tol)){
+    x[abs(x-10) <= tol]
+  } else {
+    x[order(abs(x-10))]
+  }
+}
+
+#To print the information at a given infection rate
+#'@export
+IR_information.rSIR <- function(x,y,...){
+
+  t <- x$Simulation_Time
+  s <- x$Susceptible_people
+  i <- x$Infected_people
+  r <- x$Immune_people
+  n <- x$Total_people
+  rate <- i/n
+  l <- which(rate == close(rate, y)[1])[1]
+  if(max(rate) < y){ stop("Please enter an effective infection rate ") }
+
+  cat("\n\n Infection Information")
+  cat("\n-----------------------\n")
+  cat("\n Time needed to reach the given infection rate is ", t[l])
+  cat("\n Number of susceptible people at given infection rate is ", s[l])
+  cat("\n Number of infected people at given infection rate is ", i[l])
+  cat("\n Number of recovered people at given infection rate is ", r[l])
+  cat("\n Total population at given infection rate is ", n[l])
+
+  }
+
+
 #'@export
 print.rSEIR <- function(x,...){
 
@@ -43,6 +86,13 @@ print.rSEIR <- function(x,...){
   cat("\n-----------------------")
   cat("\nNo. days :", x$Simulation_Time[nrow(x)])
   cat("\nNo. groups:", 4)
+
+  i <- x$Infected_people
+  n <- x$Total_people
+  rate <- i/n
+
+  cat("\n Biggest infection rate is ", max(rate))
+  cat("\n Time to the biggest infection rate is ", which(rate == max(rate))[1])
 
   cat("\n\nModel Parameters")
   cat("\n-----------------------\n")
@@ -77,6 +127,13 @@ print.rSEIQHRF <- function(x,...){
   cat("\nNo. days :", x$Simulation_Time[nrow(x)])
   cat("\nNo. groups:", 7)
 
+  i <- x$Infected_people
+  n <- x$Total_people
+  rate <- i/n
+
+  cat("\n Biggest infection rate is ", max(rate))
+  cat("\n Time to the biggest infection rate is ", which(rate == max(rate))[1])
+
   cat("\n\nModel Parameters")
   cat("\n-----------------------\n")
 
@@ -103,3 +160,6 @@ print.rSEIQHRF <- function(x,...){
 
   invisible(x)
 }
+
+
+
