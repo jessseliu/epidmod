@@ -22,6 +22,7 @@
 #' model1 <- rSIR (N0 = 100, I0 = 0, S0 = 100, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
 #' model1
 #' print(model1)
+#' plot(model1)
 #'
 #' @export
 
