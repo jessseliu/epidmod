@@ -115,7 +115,7 @@ SEIQHRFjump <- function (x, pars) {
   pQim <- pars[14]
   pHim <- pars[15]
   # Simulate the time at which the next transition occurs
-  total_rate <- a.rate + e.rate * St * It / Nt + i.rate * Et  + (q.rate + h1.rate + r1.rate) * It +
+  total_rate <- a.rate + e.rate * St * Et / Nt + i.rate * Et  + (q.rate + h1.rate + r1.rate) * It +
     (h2.rate + r3.rate) * Qt + (r2.rate + f.rate) * Ht
   x[1] <- x[1] + rexp(1, total_rate)
   # Jump probabilities
