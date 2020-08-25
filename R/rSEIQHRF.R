@@ -19,13 +19,13 @@
 #' *\code{a.rate} represents rate of arrival of people into the population.
 #' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
 #' *\code{i.rate} represents the incubation period is 1/i.rate days.
-#' *\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt
-#' *\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt
-#' *\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt
+#' *\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt.
+#' *\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt.
+#' *\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt.
 #' *\code{r1.rate}   represents recovery time for each infected individual is 1/ r1.rate.
-#' *\code{r2.rate}   represents recovery time for each individual who accepts hospitalization is 1/ r2.rate..
-#' *\code{r3.rate}   represents recovery time for each individual who is self-quarantined is is 1/ r3.rate..
-#' *\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t is f.rate / Nt
+#' *\code{r2.rate}   represents recovery time for each individual who accepts hospitalization is 1/ r2.rate.
+#' *\code{r3.rate}   represents recovery time for each individual who is self-quarantined is is 1/ r3.rate.
+#' *\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t is f.rate / Nt.
 #' *\code{pE}   represents probability that an arrival is exposed.
 #' *\code{pSR}  represents probability that an exposed individual self-recover and turns susceptible.
 #' *\code{pIim}  represents probability that an infected person is immune after recovery.
@@ -66,7 +66,7 @@ rSEIQHRF <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St","Et", "It", "Qt", "Ht","Rt", "Ft", "Nt")
   output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
-                   Infected_people = res[,4], Quarantined_people = res[,4], Hostipalization_ppl = res[,5],
+                   Infected_people = res[,4], Quarantined_people = res[,4], Hostipalization_people = res[,5],
                    Immune_people = res[,6], Fatality_case = res[,7], Total_people = res[,8])
   class(output) <- "rSEIQHRF"
   return(output)
