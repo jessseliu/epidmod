@@ -4,7 +4,8 @@
 #' rSIR
 #'
 #'
-#' @importFrom stats rexp runif
+#' @importFrom stats rexp runif graphics
+#'
 
 #'
 #' @docType package
