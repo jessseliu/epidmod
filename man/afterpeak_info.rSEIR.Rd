@@ -4,7 +4,7 @@
 \alias{afterpeak_info.rSEIR}
 \title{Output the peak information and time of infected reducing to certain level after the peak}
 \usage{
-afterpeak_info.rSEIR(x, ...)
+\method{afterpeak_info}{rSEIR}(x, ...)
 }
 \description{
 Output the peak information and time of infected reducing to certain level after the peak

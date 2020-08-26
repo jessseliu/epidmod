@@ -66,8 +66,8 @@ rSEIQHRF <- function(N0 = 1000 , S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St","Et", "It", "Qt", "Ht","Rt", "Ft", "Nt")
   output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
-                   Infected_people = res[,4], Quarantined_people = res[,4], Hostipalization_people = res[,5],
-                   Immune_people = res[,6], Fatality_case = res[,7], Total_people = res[,8])
+                   Infected_people = res[,4], Quarantined_people = res[,5], Hostipalization_people = res[,6],
+                   Immune_people = res[,7], Fatality_case = res[,8], Total_people = res[,9])
   class(output) <- "rSEIQHRF"
   return(output)
 

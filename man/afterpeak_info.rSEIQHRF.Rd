@@ -4,7 +4,7 @@
 \alias{afterpeak_info.rSEIQHRF}
 \title{Output the peak information and time of infected reducing to certain level after the peak}
 \usage{
-afterpeak_info.rSEIQHRF(x, ...)
+\method{afterpeak_info}{rSEIQHRF}(x, ...)
 }
 \description{
 Output the peak information and time of infected reducing to certain level after the peak
