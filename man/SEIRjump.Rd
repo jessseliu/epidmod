@@ -7,12 +7,12 @@
 SEIRjump(x, pars)
 }
 \arguments{
-\item{x}{a numeric vector: (time, S, E, I, R, N) at the previous jump.}
+\item{x}{A numeric vector: (time, S, E, I, R, N) at the previous jump.}
 
-\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).}
+\item{pars}{A numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).}
 }
 \value{
-a numeric vector: (time, S, E, I, R, N) immediately after the next jump.
+A numeric vector: (time, S, E, I, R, N) immediately after the next jump.
 }
 \description{
 \code{SEIRjump} returns states of next jump given the states right now.

@@ -3,6 +3,7 @@
 #'@export
 #'
 afterpeak_info.rSIR <- function(x,...){
+  UseMethod("afterpeak_info")
 
   t <- x$Simulation_Time
   s <- x$Susceptible_people
@@ -38,6 +39,7 @@ afterpeak_info.rSIR <- function(x,...){
 #'@export
 #'
 afterpeak_info.rSEIR <- function(x,...){
+  UseMethod("afterpeak_info")
 
   t <- x$Simulation_Time
   s <- x$Susceptible_people
@@ -73,6 +75,7 @@ afterpeak_info.rSEIR <- function(x,...){
 #'@export
 #'
 afterpeak_info.rSEIQHRF <- function(x,...){
+  UseMethod("afterpeak_info")
 
   t <- x$Simulation_Time
   s <- x$Susceptible_people

@@ -11,6 +11,7 @@ close <- function(x, value, tol=NULL){
 #To print the simulated information at a given infection rate for SIR model
 #'@export
 IR_info.rSIR <- function(x,y,...){
+  UseMethod("IR_info")
 
   t <- x$Simulation_Time
   s <- x$Susceptible_people
@@ -34,6 +35,7 @@ IR_info.rSIR <- function(x,y,...){
 #To print the simulated information at a given infection rate for SEIR model
 #'@export
 IR_info.rSEIR <- function(x,y,...){
+  UseMethod("IR_info")
 
   t <- x$Simulation_Time
   s <- x$Susceptible_people
@@ -59,6 +61,7 @@ IR_info.rSEIR <- function(x,y,...){
 #To print the simulated information at a given infection rate for SEIQHRF model
 #'@export
 IR_info.rSEIQHRF <- function(x,y,...){
+  UseMethod("IR_info")
 
   t <- x$Simulation_Time
   s <- x$Susceptible_people

@@ -7,12 +7,12 @@
 SIRjump(x, pars)
 }
 \arguments{
-\item{x}{a numeric vector: (time, S, I, R, N) at the previous jump.}
+\item{x}{A numeric vector: (time, S, I, R, N) at the previous jump.}
 
-\item{pars}{a numeric vector: (alpha, pI, beta, gamma, pR).}
+\item{pars}{A numeric vector: (alpha, pI, beta, gamma, pR).}
 }
 \value{
-a numeric vector: (time, S, I, R, N) immediately after the next jump.
+A numeric vector: (time, S, I, R, N) immediately after the next jump.
 }
 \description{
 \code{SIRjump} returns states of next jump given the states right now in SIR model.

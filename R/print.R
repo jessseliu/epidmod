@@ -17,24 +17,24 @@ print.rSIR <- function(x,...){
   n <- x$Total_people
   rate <- i/n
 
-  cat("\n Biggest infection rate is ", max(rate))
-  cat("\n Time to the biggest infection rate is ", which(rate == max(rate))[1])
+  cat("\nBiggest infection rate is ", max(rate))
+  cat("\nTime to the biggest infection rate is ", which(rate == max(rate))[1])
 
 
   cat("\n\nModel Parameters")
   cat("\n-----------------------\n")
 
-  cat(" Rate of arrival =", x$Param[1])
-  cat(" Individual infection rate =", x$Param[2])
-  cat(" Recovery rate =", x$Param[3])
-  cat(" Probability of being infected for new arrival =", x$Param[4])
-  cat(" Probability of being immune for recovery people =", x$Param[5])
+  cat("\nRate of arrival =", x$Param[1])
+  cat("\nIndividual infection rate =", x$Param[2])
+  cat("\nRecovery rate =", x$Param[3])
+  cat("\nProbability of being infected for new arrival =", x$Param[4])
+  cat("\nProbability of being immune for recovery people =", x$Param[5])
 
   cat("\n\n Number of groups at the end of simulation")
   cat("\n-----------------------\n")
 
    for (i in 2:5) {
-    cat(names(x)[i], "=", x[i][nrow(x)])
+    cat("\n",names(x)[i], "=", x[i][nrow(x)])
   }
 
   invisible(x)

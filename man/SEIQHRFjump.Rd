@@ -7,12 +7,12 @@
 SEIQHRFjump(x, pars)
 }
 \arguments{
-\item{x}{a numeric vector: (time, S, E, I, Q, H, R, F, N) at the previous jump.}
+\item{x}{A numeric vector: (time, S, E, I, Q, H, R, F, N) at the previous jump.}
 
-\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).}
+\item{pars}{A numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).}
 }
 \value{
-a numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.
+A numeric vector: (time, S, E, I, Q, H, R, F, N)  immediately after the next jump.
 }
 \description{
 \code{SEIQHRFjump} returns states of next jump given the states right now.
