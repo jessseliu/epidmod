@@ -55,7 +55,7 @@ model2 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 99, pars = 
 ## Usage of `rSEIQHRF`
     In this package, SEIQHRF is the most complicated model and it contains seven groups and much more parameters. The simulation is harder than previous ones but applying the function `rSEIQHRF` is still very easy to handle. The example is below:
 
-```{r,error = FALSE}
+```{r}
 
 para <- c(8,3,2,5,3,2,1,2,1,2, 0.3, 0.5, 0.2, 0.1, 0.05)
 model3 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 99, pars = para )
@@ -88,11 +88,13 @@ model3 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, 
 
 ```{r}
 print(model1)
+
 ```
     The print method firstly introduces the type of the model and then a simulation summary would be presented which includes the maximum infection rate during the whole simulation and the needed time to reach that maximum. The motivation about this summary is to calculate out the worst situation with given inputs and remaining time for people to deal with the epidemic.Then comes to the model parameters part, where all parameters involved in the simualtion would be presented for calibration of inputs (this would be especially useful when applying the `rSEIQHRF` function). Last part is to show the number of people in each groups at the end of simulation and this would give users a very intuitive feeling about what is simulated at the end.
 
 ```{r}
 plot(model1)
+
 ```
     The plot method produces a basic time series plot with coordinate time and number of people. Different groups of curves are marked with different colors, the line type and point shape of the curve with legends on top right (In order to ensure that the image is easy to distinguish, in the SEIQHRF model, only color and line type are used to distinguish). Basically, this is a very fundamental plot method but still provide the users a very clear look about the trend of the entire simulation.
 
@@ -108,7 +110,7 @@ IR_info(model1, 0.1)
 
 ### 1. `hist` 
 ```{r}
-hist(model1, 55, type = "time")
+hist(model1, 55,  time = 30)
 
 ```
     This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infection rate

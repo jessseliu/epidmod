@@ -14,17 +14,17 @@ rSIR(
 )
 }
 \arguments{
-\item{N0}{an integer. The population size at time 0.}
+\item{N0}{An integer. The population size at time 0.}
 
-\item{I0}{an integer. The initial number of infected people.}
+\item{I0}{An integer. The initial number of infected people.}
 
-\item{R0}{an integer. The initial number of recovered people.}
+\item{R0}{An integer. The initial number of recovered people.}
 
-\item{S0}{an integer. The initial number of susceptible people.}
+\item{S0}{An integer. The initial number of susceptible people.}
 
-\item{days}{an integer. The number of days for which to simulate.}
+\item{days}{An integer. The number of days for which to simulate.}
 
-\item{pars}{a numeric vector: (a.rate, i.rate, r.rate, pI, pIm). Description about pars
+\item{pars}{A numeric vector: (a.rate, i.rate, r.rate, pI, pIm). Description about pars
 *\code{a.rate} represents rate of arrival of people into the population.
 *\code{i.rate} represents individual infection rate at time t is i.rate / Nt .
 *\code{r.rate} represents recovery time for each infected individual is 1/ r.rate.
@@ -39,5 +39,9 @@ A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t
 recover people, total number of people.
 }
 \examples{
-rSIR (N0 = 100, I0 = 0, S0 = 100, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
+model1 <- rSIR (N0 = 100, I0 = 0, S0 = 100, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
+model1
+print(model1)
+plot(model1)
+
 }

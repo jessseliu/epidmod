@@ -15,19 +15,19 @@ rSEIR(
 )
 }
 \arguments{
-\item{N0}{an integer. The population size at time 0.}
+\item{N0}{An integer. The population size at time 0.}
 
-\item{I0}{an integer. The initial number of infected people.}
+\item{I0}{An integer. The initial number of infected people.}
 
-\item{S0}{an integer. The initial number of susceptible people.}
+\item{S0}{An integer. The initial number of susceptible people.}
 
-\item{R0}{an integer. The initial number of recovered people.}
+\item{R0}{An integer. The initial number of recovered people.}
 
-\item{E0}{an integer. The initial number of exposed people.}
+\item{E0}{An integer. The initial number of exposed people.}
 
-\item{days}{an integer. The number of days for which to simulate.}
+\item{days}{An integer. The number of days for which to simulate.}
 
-\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
+\item{pars}{A numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
 Description about pars
 *\code{a.rate} represents rate of arrival of people into the population.
 *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
@@ -45,5 +45,8 @@ A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t
 recover people, total number of people.
 }
 \examples{
-rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100, pars = c(5, 4, 2, 2, 0.7, 0.3, 0.1))
+model1 <- rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100, pars = c(5, 4, 2, 2, 0.7, 0.3, 0.1))
+model1
+print(model1)
+
 }

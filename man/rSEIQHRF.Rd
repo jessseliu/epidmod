@@ -18,36 +18,36 @@ rSEIQHRF(
 )
 }
 \arguments{
-\item{N0}{an integer. The population size at time 0}
+\item{N0}{An integer. The population size at time 0}
 
-\item{S0}{an integer. The initial number of susceptible people.}
+\item{S0}{An integer. The initial number of susceptible people.}
 
-\item{E0}{an integer. The initial number of exposed people.}
+\item{E0}{An integer. The initial number of exposed people.}
 
-\item{I0}{an integer. The initial number of infected people.}
+\item{I0}{An integer. The initial number of infected people.}
 
-\item{Q0}{an integer. The initial number of quarantined people.}
+\item{Q0}{An integer. The initial number of quarantined people.}
 
-\item{H0}{an integer. The initial number of people require hospitalization.}
+\item{H0}{An integer. The initial number of people require hospitalization.}
 
-\item{R0}{an integer. The initial number of recovered people.}
+\item{R0}{An integer. The initial number of recovered people.}
 
-\item{F0}{an integer. The initial number of case fatality.}
+\item{F0}{An integer. The initial number of case fatality.}
 
-\item{days}{an integer. The number of days for which to simulate.}
+\item{days}{An integer. The number of days for which to simulate.}
 
-\item{pars}{a numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
+\item{pars}{A numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
 #' Description about pars
 *\code{a.rate} represents rate of arrival of people into the population.
 *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
 *\code{i.rate} represents the incubation period is 1/i.rate days.
-*\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt
-*\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt
-*\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt
+*\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt.
+*\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt.
+*\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt.
 *\code{r1.rate}   represents recovery time for each infected individual is 1/ r1.rate.
-*\code{r2.rate}   represents recovery time for each individual who accepts hospitalization is 1/ r2.rate..
-*\code{r3.rate}   represents recovery time for each individual who is self-quarantined is is 1/ r3.rate..
-*\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t is f.rate / Nt
+*\code{r2.rate}   represents recovery time for each individual who accepts hospitalization is 1/ r2.rate.
+*\code{r3.rate}   represents recovery time for each individual who is self-quarantined is is 1/ r3.rate.
+*\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t is f.rate / Nt.
 *\code{pE}   represents probability that an arrival is exposed.
 *\code{pSR}  represents probability that an exposed individual self-recover and turns susceptible.
 *\code{pIim}  represents probability that an infected person is immune after recovery.
@@ -63,6 +63,8 @@ recover people, total number of people.
 }
 \examples{
 para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
-rSEIQHRF(N0 = 100, S0 = 99, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 100,pars = para )
+model1 <- rSEIQHRF(N0 = 100, S0 = 99, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 100,pars = para )
+model1
+print(model1)
 
 }
