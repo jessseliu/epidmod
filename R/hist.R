@@ -1,17 +1,18 @@
+#' S3 histogram for stochastic SIR model
+#'
+#' \code{hist} returns histogram for each group given a certain a time or an infected rate for SIR model
+#' @param x the output from simulation
+#' @param y the input infection rate or a certain time
+#' @param type the type of the second argument
+#' @examples
+#' model1 <- rSIR (N0 = 1000, I0 = 0, S0 = 1000, days = 300, pars = c(1/10, 1, 1/5, 0.1, 0.1))
+#'hist( model1, 81, type = "time" )
+#'hist( model1, 0.7, type = "rate" )
 #'@export
-#To find the close value in a vector
-close <- function(x, value, tol=NULL){
-  if(!is.null(tol)){
-    x[abs(x-10) <= tol]
-  } else {
-    x[order(abs(x-10))]
-  }
-}
-
-#'@export
-#plot the histogram for each group given a certain a time or an infected rate for SIR model
+#'
 hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
 
+  # store the simulation value into vector and extract the type
   type <- match.arg(type)
   t <- x$Simulation_Time
   s <- x$Susceptible_people
@@ -20,12 +21,16 @@ hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
   n <- x$Total_people
   rate <- i/n
 
+  # adjust the size for plotting
   par(mfrow = c(1,3))
 
+  # if the second input is time
   if(type == "time") {
     if( y > max(t) ){
       stop("Please enter an effective time ")
     }else{
+
+      # select values until the given time
       s <- s[1:y]
       i <- i[1:y]
       r <- r[1:y]
@@ -34,11 +39,17 @@ hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
       hist(r, col = "seagreen1", main = "The histogram of Recovered at given time")
     }
   } else {
+
+    # if the second input is rate
     if(max(rate) < y){
       cat("\n The largest infection rate is :", max(rate))
       stop("Please enter an effective infection rate ")
     }else{
+
+      # determine the position of given rate
       l <- order(abs(rate- y))[1]
+
+      # select values until the given rate
       s <- s[1:l]
       i <- i[1:l]
       r <- r[1:l]
@@ -52,11 +63,24 @@ hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
 
 }
 
+
+#' S3 histogram for stochastic SEIR model
+#'
+#' \code{hist} returns histogram for each group given a certain a time or an infected rate for SEIR model
+#' @param x the output from simulation
+#' @param y the input infection rate or a certain time
+#' @param type the type of the second argument
+#' @examples
+#' model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+#'hist( model1, 81, type = "time" )
+#'hist( model1, 0.3, type = "rate" )
 #'@export
-#plot the histogram for each group given a certain a time or an infected rate for SEIR model
+#'
 
 hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
 
+
+  # store the simulation value into vector and extract the type
   type <- match.arg(type)
   t <- x$Simulation_Time
   s <- x$Susceptible_people
@@ -69,12 +93,17 @@ hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
   n <- x$Total_people
   rate <- i/n
 
+
+  # adjust the size for plotting
   par(mfrow = c(1,4))
 
+  # if the second input is time
   if(type == "time") {
     if( y > max(t) ){
       stop("Please enter an effective time ")
     }else{
+
+      # select values until the given time
       s <- s[1:y]
       e <- e[1:y]
       i <- i[1:y]
@@ -85,11 +114,17 @@ hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
       hist(r, col = "seagreen1", main = "The histogram of Recovered at given time")
     }
   } else {
+
+    # if the second input is rate
     if(max(rate) < y){
       cat("\n The largest infection rate is :", max(rate))
       stop("Please enter an effective infection rate ")
     }else{
+
+      # determine the position of given rate
       l <- order(abs(rate- y))[1]
+
+      # select values until the given rate
       s <- s[1:l]
       e <- e[1:l]
       i <- i[1:l]
@@ -106,11 +141,23 @@ hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
 }
 
 
+#' S3 histogram for stochastic SEIQHRF model
+#'
+#' \code{hist} returns histogram for each group given a certain a time or an infected rate for SEIQHRF model
+#' @param x the output from simulation
+#' @param y the input infection rate or a certain time
+#' @param type the type of the second argument
+#' @examples
+#' para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
+#' model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )
+#' hist( model1, 81, type = "time" )
+#' hist( model1, 0.1, type = "rate" )
 #'@export
-#plot the histogram for each group given a certain a time or an infected rate for SEIQHRF model
-
+#'
 hist.rSEIQHRF <- function(x, y, type = c("time", "rate"), ...){
 
+
+  # store the simulation value into vector and extract the type
   type <- match.arg(type)
   t <- x$Simulation_Time
   s <- x$Susceptible_people
@@ -123,12 +170,18 @@ hist.rSEIQHRF <- function(x, y, type = c("time", "rate"), ...){
   n <- x$Total_people
   rate <- i/n
 
+
+  # adjust the size for plotting
   par(mfrow = c(2,4))
 
+
+  # if the second input is time
   if(type == "time") {
     if( y > max(t) ){
       stop("Please enter an effective time ")
     }else{
+
+      # select values until the given time
       s <- s[1:y]
       e <- e[1:y]
       i <- i[1:y]
@@ -145,11 +198,17 @@ hist.rSEIQHRF <- function(x, y, type = c("time", "rate"), ...){
       hist(f, col = "brown1", main = "The histogram of case fatality at given time")
     }
   } else {
+
+    # if the second input is rate
     if(max(rate) < y){
       cat("\n The largest infection rate is :", max(rate))
       stop("Please enter an effective infection rate ")
     }else{
+
+      # determine the position of given rate
       l <- order(abs(rate- y))[1]
+
+      # select values until the given rate
       s <- s[1:l]
       e <- e[1:l]
       i <- i[1:l]
