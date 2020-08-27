@@ -40,8 +40,7 @@ model2 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars =
 
     The objects returned by the `rSIR` and `rSEIR` function are two complicated matrix to store all the values in each groups during the simulation and S3 generic methods are used for presenting better view of outputs (will be mentioned in next section).The first several arguments represent the set initial value of number of people in different groups and the total simulation time (the unit to measure time in this system is day).It is obvious that this two function are very similar and they both have an argument `pars` to store the needed parameters of transition rates. Now we introduce the meaning of each parameters in `par`:
     
-    
----
+
 ### Parameters stored in `pars` of `rSIR`
 
 * *a.rate*     rate of arrival of people into the population
@@ -50,7 +49,7 @@ model2 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars =
 * *pI*         probability that an arrival is infected
 * *pIm*        probability that an infected person is immune after recovery
 
----
+
 ### Parameters stored in `pars` of `rSEIR`
 
 * *a.rate*     rate of arrival of people into the population
@@ -61,7 +60,7 @@ model2 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars =
 * *pSR*        probability that an exposed individual self-recover and turns susceptible.
 * *pIm*        probability that an infected person is immune after recovery
 
----
+
     Most of the parameters have the same meaning, however, the user should be careful about the `i.rate` when applying the function. Due to the different assumptions in these two models, `i.rate` is the object to control the incubation time.  
 
 
