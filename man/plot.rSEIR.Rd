@@ -6,6 +6,14 @@
 \usage{
 \method{plot}{rSEIR}(x, ...)
 }
+\arguments{
+\item{x}{the output from simulation}
+}
 \description{
-S3 plot method for stochastic SEIR model
+\code{plot} returns the time series plot of simulated SEIR model
+}
+\examples{
+model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+plot(model1)
+
 }

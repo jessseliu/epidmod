@@ -1,11 +1,12 @@
 ---
-title: " **epidmod** Simualtion of Stochastic epidemic models"
+title: "epidmod: Simualtion of Three Stochastic Epidemic Models"
 author: " Yingzhe Liu"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my-vignette}
+  %\VignetteIndexEntry{epidmod: Simualtion of Three Stochastic Epidemic Models}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+
 ---
 
 ```{r, include = FALSE}
@@ -19,10 +20,14 @@ knitr::opts_chunk$set(
 library(epidmod)
 ```
 
-    **epidmod**  is a system to simulate three typical stochastic epidemic models: stochastic SIR, SEIR, SEIQHRF model which provides a great deal of control and flexibility in the model itself and arrangement of information output. **epidmod** does not show the numerical calculations and What it does provide is a basic idea for stochastic simulation.The aim of this document is to provide an introduction to the usage of fundamental functions underlying the **epidmod** package: `rSIR`,  `rSEIR`, `rSEIQHRF`, the corresponding print & plot functions to show the simulation outputs and other S3 methods to extract and study information from the simulation. What can be achieved and how to achieve it using **epidmod** are also demonstrated by several examples below.
+
+    __epidmod  is a system to simulate three typical stochastic epidemic models: stochastic SIR, SEIR, SEIQHRF model which provides a great deal of control and flexibility in the model itself and arrangement of information output. **epidmod** does not show the numerical calculations and What it does provide is a basic idea for stochastic simulation.The aim of this document is to provide an introduction to the usage of fundamental functions underlying the **epidmod** package: `rSIR`,  `rSEIR`, `rSEIQHRF`, the corresponding print & plot functions to show the simulation outputs and other S3 methods to extract and study information from the simulation. What can be achieved and how to achieve it using **epidmod** are also demonstrated by several examples below.
+
 
 ## Usage of `rSIR` and `rSEIR` 
     `rSIR` and `rSEIR` are designed to do the simulation of stochastic SIR and SEIR model with matrix outputs. The SIR model is the most basic one and SEIR, SEIQHRF models are all its extensions. When applying the functions, users must be very careful about the parameters. The below codes demonstrate the correct usage with random selected parameters.
+
+
 
 ```{r, error = FALSE}
 
@@ -30,17 +35,24 @@ model1 <- rSIR (N0 = 1000, I0 = 0, S0 = 1000, days = 300, pars = c(1/10, 1, 1/5,
 model2 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 
 ```
+   
+    
+
     The objects returned by the `rSIR` and `rSEIR` function are two complicated matrix to store all the values in each groups during the simulation and S3 generic methods are used for presenting better view of outputs (will be mentioned in next section).The first several arguments represent the set initial value of number of people in different groups and the total simulation time (the unit to measure time in this system is day).It is obvious that this two function are very similar and they both have an argument `pars` to store the needed parameters of transition rates. Now we introduce the meaning of each parameters in `par`:
+    
+    
 ---
 ### Parameters stored in `pars` of `rSIR`
+
 * *a.rate*     rate of arrival of people into the population
 * *i.rate*     individual infection rate at time t is i.rate/ Nt
 * *r.rate*     recovery time for each infected individual is 1/ r.rate
 * *pI*         probability that an arrival is infected
 * *pIm*        probability that an infected person is immune after recovery
----
 
+---
 ### Parameters stored in `pars` of `rSEIR`
+
 * *a.rate*     rate of arrival of people into the population
 * *e.rate*     individual being exposed rate at time t is e.rate/ Nt.
 * *i.rate*     the incubation period is 1/i.rate days
@@ -48,6 +60,7 @@ model2 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars =
 * *pE*         probability that an arrival is exposed.
 * *pSR*        probability that an exposed individual self-recover and turns susceptible.
 * *pIm*        probability that an infected person is immune after recovery
+
 ---
     Most of the parameters have the same meaning, however, the user should be careful about the `i.rate` when applying the function. Due to the different assumptions in these two models, `i.rate` is the object to control the incubation time.  
 
@@ -81,7 +94,10 @@ model3 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, 
 * *pIim*       probability that an infected person is immune after recovery
 * *pQim*       probability that a quarantined person  is immune after recovery
 * *pHim*       probability that an individual who requires hospitalization recovers and  turns susceptible
+
 ---
+
+
 
 ## `Print` & `Plot` method
     The returns in above functions are all huge matrix with stored value and that's inappropriate for presenting. To solve this problem, I introduce the S3 print and plot method to help present the outputs.Let use the previous `model1` as the example to show the output:
@@ -96,6 +112,7 @@ print(model1)
 plot(model1)
 
 ```
+
     The plot method produces a basic time series plot with coordinate time and number of people. Different groups of curves are marked with different colors, the line type and point shape of the curve with legends on top right (In order to ensure that the image is easy to distinguish, in the SEIQHRF model, only color and line type are used to distinguish). Basically, this is a very fundamental plot method but still provide the users a very clear look about the trend of the entire simulation.
 
 
@@ -108,14 +125,15 @@ IR_info(model1, 0.7)
 ```
     This function is useful when users would like find out how is the simulation with a given specific infection rate. It will show the needed time to reach that given infection rate and the number of people in each group at that time. User should be careful about the input infection should be equal or lower than the maximum infection rate (could be found in output of `print`).
 
-### 1. `hist` 
+### 2. `hist` 
 ```{r}
 hist( model1, 81, type = "time" )
 hist( model1, 0.7, type = "rate" )
 ```
+
     This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infection rate
 
-### 1. `afterpeak_info` 
+### 3. `afterpeak_info` 
 ```{r}
 afterpeak_info(model1)
 

@@ -6,6 +6,14 @@
 \usage{
 \method{print}{rSIR}(x, ...)
 }
+\arguments{
+\item{x}{the output from simulation}
+}
 \description{
-S3 print method for stochastic SIR model
+\code{print} returns the basic information of simulated SIR model
+}
+\examples{
+model1 <- rSIR (N0 = 1000, I0 = 0, S0 = 1000, days = 300, pars = c(1/10, 1, 1/5, 0.1, 0.1))
+print(model1)
+
 }

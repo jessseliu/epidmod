@@ -2,10 +2,17 @@
 % Please edit documentation in R/afterpeak_info.R
 \name{afterpeak_info.rSEIR}
 \alias{afterpeak_info.rSEIR}
-\title{Output the peak information and time of infected reducing to certain level after the peak}
+\title{New S3 method for gathering information from stochastic SEIR model after the peak}
 \usage{
 \method{afterpeak_info}{rSEIR}(x, ...)
 }
+\arguments{
+\item{x}{the output from simulation}
+}
 \description{
-Output the peak information and time of infected reducing to certain level after the peak
+\code{afterpeak_info} returns the peak information and time of infected reducing to certain level after the peak
+}
+\examples{
+model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+afterpeak_info(model1)
 }

@@ -2,10 +2,18 @@
 % Please edit documentation in R/afterpeak_info.R
 \name{afterpeak_info.rSEIQHRF}
 \alias{afterpeak_info.rSEIQHRF}
-\title{Output the peak information and time of infected reducing to certain level after the peak}
+\title{New S3 method for gathering information from stochastic SEIQHRF model after the peak}
 \usage{
 \method{afterpeak_info}{rSEIQHRF}(x, ...)
 }
+\arguments{
+\item{x}{the output from simulation}
+}
 \description{
-Output the peak information and time of infected reducing to certain level after the peak
+\code{afterpeak_info} returns the peak information and time of infected reducing to certain level after the peak
+}
+\examples{
+para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
+model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )))
+afterpeak_info(model1)
 }

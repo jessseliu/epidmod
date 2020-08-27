@@ -1,13 +1,11 @@
-#' epidmod: A package for
+#' epidmod: A package for simulating three stochastic epidemic models
 #'
 #' The epidmod package provides categories of important functions:
-#' rSIR
+#' rSIR, rSEIR, rSEIQHFR and multiple S3 methods
 #'
 #'
-#' @importFrom stats rexp runif graphics
-#'
-
+#' @importFrom stats rexp runif
+#' @importFrom graphics hist matplot
 #'
 #' @docType package
 #' @name epidmod
-NULL

@@ -6,6 +6,15 @@
 \usage{
 \method{plot}{rSEIQHRF}(x, ...)
 }
+\arguments{
+\item{x}{the output from simulation}
+}
 \description{
-S3 plot method for stochastic SEIQHRF model
+\code{plot} returns the time series plot of simulated SEIQHRF model
+}
+\examples{
+para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
+model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )
+plot(model1)
+
 }
