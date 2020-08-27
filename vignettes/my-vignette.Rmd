@@ -21,7 +21,7 @@ library(epidmod)
 ```
 
 
-    __epidmod  is a system to simulate three typical stochastic epidemic models: stochastic SIR, SEIR, SEIQHRF model which provides a great deal of control and flexibility in the model itself and arrangement of information output. **epidmod** does not show the numerical calculations and What it does provide is a basic idea for stochastic simulation.The aim of this document is to provide an introduction to the usage of fundamental functions underlying the **epidmod** package: `rSIR`,  `rSEIR`, `rSEIQHRF`, the corresponding print & plot functions to show the simulation outputs and other S3 methods to extract and study information from the simulation. What can be achieved and how to achieve it using **epidmod** are also demonstrated by several examples below.
+    **epidmod**  is a system to simulate three typical stochastic epidemic models: stochastic SIR, SEIR, SEIQHRF model which provides a great deal of control and flexibility in the model itself and arrangement of information output. **epidmod** does not show the numerical calculations and What it does provide is a basic idea for stochastic simulation.The aim of this document is to provide an introduction to the usage of fundamental functions underlying the **epidmod** package: `rSIR`,  `rSEIR`, `rSEIQHRF`, the corresponding print & plot functions to show the simulation outputs and other S3 methods to extract and study information from the simulation. What can be achieved and how to achieve it using **epidmod** are also demonstrated by several examples below.
 
 
 ## Usage of `rSIR` and `rSEIR` 
