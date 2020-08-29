@@ -32,7 +32,7 @@ plot.rSIR <- function(x,...){
   leg <- c("susceptible", "infected", "immune", "population")
 
   # plot for established matrix
-  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col = c("burlywood",  "firebrick1", "seagreen1", "cornflowerblue"),
+  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col = c("burlywood",  "firebrick1", "seagreen1", "cornflowerblue"), main = " Time series plot of simulated model ",
           ylab = "Number of people", xlab = "time ( in days )")
   legend("right", legend = leg, lty = 1, lwd = 2, col = c("burlywood",  "firebrick1", "seagreen1", "cornflowerblue"), bg = "transparent")
 
@@ -74,7 +74,7 @@ plot.rSEIR <- function(x,...){
   leg <- c("susceptible", "exposed", "infected", "immune", "population")
 
   # plot for established matrix
-  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col = c("burlywood", "darkgoldenrod1", "firebrick1", "seagreen1", "cornflowerblue"),
+  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col = c("burlywood", "darkgoldenrod1", "firebrick1", "seagreen1", "cornflowerblue"), main = "Time series plot of simulated model",
           ylab = "Number of people", xlab = "time ( in days )")
   legend("right", legend = leg, title="Group Type", lty = 1, lwd = 2, col = c("burlywood", "darkgoldenrod1", "firebrick1", "seagreen1", "cornflowerblue"), bg = "transparent")
 
@@ -119,7 +119,7 @@ plot.rSEIQHRF <- function(x,...){
   leg <- c("susceptible", "exposed", "infected", "quarantined", "need hospitalizationo", "immune", "fatality", "population")
 
   # plot for established matrix
-  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col=c("burlywood", "darkgoldenrod1", "firebrick1","black","chocolate1",  "seagreen1","brown1", "cornflowerblue"),
+  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col=c("burlywood", "darkgoldenrod1", "firebrick1","black","chocolate1",  "seagreen1","brown1", "cornflowerblue"),  main = "Time series plot of simulated model",
           ylab = "Number of people", xlab = "time ( in days )")
   legend("right", legend = leg, title="Group Type", lty = 1, lwd = 2, col=c("burlywood", "darkgoldenrod1", "firebrick1","black","chocolate1",  "seagreen1","brown1", "cornflowerblue" ), bg = "transparent")
 
