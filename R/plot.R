@@ -116,12 +116,12 @@ plot.rSEIQHRF <- function(x,...){
 
   # adjust the size of plot
   par(mar = c(4, 4, 1, 1))
-  leg <- c("susceptible", "exposed", "infected", "quarantined", "need hospitalizationo", "immune", "fatality", "population")
+  leg <- c("susceptible", "exposed", "infected", "quarantined", "need hospitalization", "immune", "fatality", "population")
 
   # plot for established matrix
-  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col=c("burlywood", "darkgoldenrod1", "firebrick1","black","chocolate1",  "seagreen1","brown1", "cornflowerblue"),  main = "Time series plot of simulated model",
+  matplot(m[, 1], m[, -1], type = "l", lty = 1, lwd = 2, col=c("burlywood", "darkgoldenrod1", "lightpink","black","chocolate1",  "seagreen1","brown1", "cornflowerblue"),  main = "Time series plot of simulated model",
           ylab = "Number of people", xlab = "time ( in days )")
-  legend("right", legend = leg, title="Group Type", lty = 1, lwd = 2, col=c("burlywood", "darkgoldenrod1", "firebrick1","black","chocolate1",  "seagreen1","brown1", "cornflowerblue" ), bg = "transparent")
+  legend("right", legend = leg, title="Group Type", lty = 1, lwd = 2, col=c("burlywood", "darkgoldenrod1", "lightpink","black","chocolate1",  "seagreen1","brown1", "cornflowerblue" ), bg = "transparent")
 
 
   invisible(x)

@@ -14,7 +14,7 @@
 #' @param pars A numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
 #' Description about pars
 #' *\code{a.rate} represents rate of arrival of people into the population.
-#' *\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
+#' *\code{e.rate} represents individual effective contact rate.
 #' *\code{i.rate} represents the incubation period is 1/i.rate days.
 #' *\code{r.rate} represents recovery time for each infected individual is 1/ r.rate.
 #' *\code{pE}     represents probability that an arrival is exposed.
@@ -23,7 +23,7 @@
 #'
 #' @return A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t, R_t, N_t) at time t.
 #' @examples
-#' model1 <- rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100, pars = c(5, 4, 2, 2, 0.7, 0.3, 0.1))
+#' model1 <- rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100,  pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 #' model1
 #' print(model1)
 #'
