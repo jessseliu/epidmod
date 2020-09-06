@@ -7,11 +7,10 @@ Maintainer: Yingzhe Liu <jesseliu011@gmail.com>
 Description: This package is aim at simulating from stochastic SIR, SEIR and SEIQHRF model. Users have several apporaches to
     view the outputs and plots of simulation. It is a good simulation tool for studying epidemic and continuous stochastic 
     process.   
-    
 URL: http://github.com/jesseliu/epidmod
 BugReports: http://github.com/jesseliu/epidmod/issues
 Imports:
-    stats graphics
+    stats 
 License: CC0
 Encoding: UTF-8
 LazyData: true
