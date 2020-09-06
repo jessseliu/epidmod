@@ -117,29 +117,36 @@ plot(model1)
 
 ```
 
-The plot method produces a basic time series plot with coordinate time and number of people. Different groups of curves are marked with different colors, the line type and point shape of the curve with legends on top right (In order to ensure that the image is easy to distinguish, in the SEIQHRF model, only color and line type are used to distinguish). Basically, this is a very fundamental plot method but still provide the users a very clear look about the trend of the entire simulation.
+The plot method produces a basic time series plot with coordinate time and number of people. Different groups of curves are marked with different colors, the line type and point shape of the curve with legends on top right (In order to ensure that the image is easy to distinguish, in the SEIQHRF model, only color but line types look the same). Basically, this is a very fundamental plot method but still provide the users a very clear look about the trend of the entire simulation.
 
 
 ## Other S3 methods
 In this package, there are other functions  to extract information from the simulated results and they will be demonstrated one by one.
 
 ### 1.`IR_info` 
+
+This function is useful when users would like find out how is the simulation with a given specific proportion of infected people. It will show the needed time to reach that given infection rate and the number of people in each group at that time. User should be careful about the input infection should be equal or lower than the maximum infected proportion (could be found in output of `print`).
+
 ```{r}
 IR_info(model1, 0.7)
 ```
-This function is useful when users would like find out how is the simulation with a given specific infection rate. It will show the needed time to reach that given infection rate and the number of people in each group at that time. User should be careful about the input infection should be equal or lower than the maximum infection rate (could be found in output of `print`).
+
 
 ### 2. `hist` 
+
+This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infected proportion.
+
 ```{r}
 hist( model1, 81, type = "time", fig.width = 10, fig.height = 6 )
 hist( model1, 0.7, type = "rate", fig.width = 10, fig.height = 6 )
 ```
 
-This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infection rate
+
 
 ### 3. `afterpeak_info` 
+This function return the peak information about the simulation and after peak, the time until the infected reduce to 50%, 30% and 10% of the maximum infected. It will help the users to study the after peak information and better assess the impact of the epidemic.
 ```{r}
 afterpeak_info(model1)
 
 ```
-This function return the peak information about the simulation and after peak, the time until the infected reduce to 50%, 30% and 10% of the maximum infected. It will help the users to study the after peak information and better assess the impact of the epidemic.
+
