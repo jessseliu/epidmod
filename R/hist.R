@@ -2,15 +2,15 @@
 #'
 #' \code{hist} returns histogram for each group given a certain a time or an infected rate for SIR model
 #' @param x the output from simulation
-#' @param y the input infection rate or a certain time
+#' @param y the input infected proportion or a certain time
 #' @param type the type of the second argument
 #' @examples
 #' model1 <- rSIR (N0 = 1000, I0 = 0, S0 = 1000, days = 300, pars = c(1/10, 1, 1/5, 0.1, 0.1))
 #'hist( model1, 81, type = "time" )
-#'hist( model1, 0.7, type = "rate" )
+#'hist( model1, 0.7, type = "proportion" )
 #'@export
 #'
-hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
+hist.rSIR <- function(x, y, type = c("time", "proportion"), ...){
 
   # store the simulation value into vector and extract the type
   type <- match.arg(type)
@@ -22,7 +22,8 @@ hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
   rate <- i/n
 
   # adjust the size for plotting
-  par(mfrow = c(1,3))
+  oldpar <- graphics::par(mfrow = c(1, 3))
+  on.exit(graphics::par(oldpar))
 
   # if the second input is time
   if(type == "time") {
@@ -34,28 +35,28 @@ hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
       s <- s[1:y]
       i <- i[1:y]
       r <- r[1:y]
-      hist(s, col = "burlywood1" , main = "The histogram of Susceptible at given time")
-      hist(i, col = "firebrick1", main = "The histogram of Infected at given time")
-      hist(r, col = "seagreen1", main = "The histogram of Recovered at given time")
+      hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
+      hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
+      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
     }
   } else {
 
-    # if the second input is rate
+    # if the second input is proportion
     if(max(rate) < y){
-      cat("\n The largest infection rate is :", max(rate))
-      stop("Please enter an effective infection rate ")
+      cat("\n The largest infected proportion is :", max(rate))
+      stop("Please enter an effective infected proportion ")
     }else{
 
-      # determine the position of given rate
+      # determine the position of given proportion
       l <- order(abs(rate- y))[1]
 
-      # select values until the given rate
+      # select values until the givenproportion
       s <- s[1:l]
       i <- i[1:l]
       r <- r[1:l]
-      hist(s, col = "burlywood1" , main = "The histogram of Susceptible at given infection rate ")
-      hist(i, col = "firebrick1", main = "The histogram of Infected at given infection rate")
-      hist(r, col = "seagreen1", main = "The histogram of Recovered at given infection rate")
+      hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
+      hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
+      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
 
     }
 
@@ -68,16 +69,16 @@ hist.rSIR <- function(x, y, type = c("time", "rate"), ...){
 #'
 #' \code{hist} returns histogram for each group given a certain a time or an infected rate for SEIR model
 #' @param x the output from simulation
-#' @param y the input infection rate or a certain time
+#' @param y the input infection proportion or a certain time
 #' @param type the type of the second argument
 #' @examples
 #' model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 #'hist( model1, 81, type = "time" )
-#'hist( model1, 0.3, type = "rate" )
+#'hist( model1, 0.3, type = "proportion" )
 #'@export
 #'
 
-hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
+hist.rSEIR <- function(x, y, type = c("time", "proportion"), ...){
 
 
   # store the simulation value into vector and extract the type
@@ -95,7 +96,8 @@ hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
 
 
   # adjust the size for plotting
-  par(mfrow = c(1,4))
+  oldpar <- graphics::par(mfrow = c(1, 3))
+  on.exit(graphics::par(oldpar))
 
   # if the second input is time
   if(type == "time") {
@@ -108,31 +110,32 @@ hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
       e <- e[1:y]
       i <- i[1:y]
       r <- r[1:y]
-      hist(s, col = "burlywood1" , main = "The histogram of Susceptible at given time")
-      hist(e, col = "darkgoldenrod1" , main = "The histogram of Exposed at given time")
-      hist(i, col = "firebrick1", main = "The histogram of Infected at given time")
-      hist(r, col = "seagreen1", main = "The histogram of Recovered at given time")
+
+      hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
+      hist(e,  prob = TRUE,  col = "darkgoldenrod1" , main = "Exposed")
+      hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
+      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
     }
   } else {
 
-    # if the second input is rate
+    # if the second input is infected proportion
     if(max(rate) < y){
-      cat("\n The largest infection rate is :", max(rate))
-      stop("Please enter an effective infection rate ")
+      cat("\n The largest infected proportion is :", max(rate))
+      stop("Please enter an effective infected proportion ")
     }else{
 
-      # determine the position of given rate
+      # determine the position of given infected proportion
       l <- order(abs(rate- y))[1]
 
-      # select values until the given rate
+      # select values until the infected proportion
       s <- s[1:l]
       e <- e[1:l]
       i <- i[1:l]
       r <- r[1:l]
-      hist(s, col = "burlywood1" , main = "The histogram of Susceptible at given infection rate ")
-      hist(e, col = "darkgoldenrod1" , main = "The histogram of Exposed at given time")
-      hist(i, col = "firebrick1", main = "The histogram of Infected at given infection rate")
-      hist(r, col = "seagreen1", main = "The histogram of Recovered at given infection rate")
+      hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
+      hist(e,  prob = TRUE,  col = "darkgoldenrod1" , main = "Exposed")
+      hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
+      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
 
     }
 
@@ -145,16 +148,16 @@ hist.rSEIR <- function(x, y, type = c("time", "rate"), ...){
 #'
 #' \code{hist} returns histogram for each group given a certain a time or an infected rate for SEIQHRF model
 #' @param x the output from simulation
-#' @param y the input infection rate or a certain time
+#' @param y the input infection proportion or a certain time
 #' @param type the type of the second argument
 #' @examples
 #' para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
 #' model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )
 #' hist( model1, 81, type = "time" )
-#' hist( model1, 0.1, type = "rate" )
+#' hist( model1, 0.1, type = "proportion" )
 #'@export
 #'
-hist.rSEIQHRF <- function(x, y, type = c("time", "rate"), ...){
+hist.rSEIQHRF <- function(x, y, type = c("time", "proportion"), ...){
 
 
   # store the simulation value into vector and extract the type
@@ -172,7 +175,8 @@ hist.rSEIQHRF <- function(x, y, type = c("time", "rate"), ...){
 
 
   # adjust the size for plotting
-  par(mfrow = c(2,4))
+  oldpar <- graphics::par(mfrow = c(1, 3))
+  on.exit(graphics::par(oldpar))
 
 
   # if the second input is time
@@ -188,27 +192,26 @@ hist.rSEIQHRF <- function(x, y, type = c("time", "rate"), ...){
       q <- q[1:y]
       h <- h[1:y]
       r <- r[1:y]
-      f <- f[1:y]
-      hist(s, col = "burlywood1" , main = "The histogram of Susceptible at given time")
-      hist(e, col = "darkgoldenrod1" , main = "The histogram of Exposed at given time")
-      hist(i, col = "firebrick1", main = "The histogram of Infected at given time")
-      hist(q, col = "black", main = "The histogram of self-quarantined at given time")
-      hist(h, col = "chocolate1", main = "The histogram of those require hospitalization at given time")
-      hist(r, col = "seagreen1", main = "The histogram of Recovered at given time")
-      hist(f, col = "brown1", main = "The histogram of case fatality at given time")
+      hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
+      hist(e,  prob = TRUE,  col = "darkgoldenrod1" , main = "Exposed")
+      hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
+      hist(q,  prob = TRUE,  col = "black", main = "Quarantined")
+      hist(h,  prob = TRUE,  col = "chocolate1", main = "Requiring Hospitalization")
+      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
+      hist(f,  prob = TRUE,  col = "brown1", main = "Fatality")
     }
   } else {
 
-    # if the second input is rate
+    # if the second input is infected proportion
     if(max(rate) < y){
-      cat("\n The largest infection rate is :", max(rate))
-      stop("Please enter an effective infection rate ")
+      cat("\n The largest infected proportion is :", max(rate))
+      stop("Please enter an effective infected proportion")
     }else{
 
-      # determine the position of given rate
+      # determine the position of given infected proportion
       l <- order(abs(rate- y))[1]
 
-      # select values until the given rate
+      # select values until the given infected proportion
       s <- s[1:l]
       e <- e[1:l]
       i <- i[1:l]
@@ -217,13 +220,13 @@ hist.rSEIQHRF <- function(x, y, type = c("time", "rate"), ...){
       r <- r[1:l]
       f <- f[1:l]
 
-      hist(s, col = "burlywood1" , main = "The histogram of Susceptible at given time")
-      hist(e, col = "darkgoldenrod1" , main = "The histogram of Exposed at given time")
-      hist(i, col = "firebrick1", main = "The histogram of Infected at given time")
-      hist(q, col = "black", main = "The histogram of self-quarantined at given time")
-      hist(h, col = "chocolate1", main = "The histogram of those require hospitalization at given time")
-      hist(r, col = "seagreen1", main = "The histogram of Recovered at given time")
-      hist(f, col = "brown1", main = "The histogram of case fatality at given time")
+      hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
+      hist(e,  prob = TRUE,  col = "darkgoldenrod1" , main = "Exposed")
+      hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
+      hist(q,  prob = TRUE,  col = "black", main = "Quarantined")
+      hist(h,  prob = TRUE,  col = "chocolate1", main = "Requiring Hospitalization")
+      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
+      hist(f,  prob = TRUE,  col = "brown1", main = "Fatality")
 
 
     }
