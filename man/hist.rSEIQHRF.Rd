@@ -4,12 +4,12 @@
 \alias{hist.rSEIQHRF}
 \title{S3 histogram for stochastic SEIQHRF model}
 \usage{
-\method{hist}{rSEIQHRF}(x, y, type = c("time", "rate"), ...)
+\method{hist}{rSEIQHRF}(x, y, type = c("time", "proportion"), ...)
 }
 \arguments{
 \item{x}{the output from simulation}
 
-\item{y}{the input infection rate or a certain time}
+\item{y}{the input infection proportion or a certain time}
 
 \item{type}{the type of the second argument}
 }
@@ -20,5 +20,5 @@
 para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
 model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )
 hist( model1, 81, type = "time" )
-hist( model1, 0.1, type = "rate" )
+hist( model1, 0.1, type = "proportion" )
 }

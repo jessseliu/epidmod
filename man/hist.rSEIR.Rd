@@ -4,12 +4,12 @@
 \alias{hist.rSEIR}
 \title{S3 histogram for stochastic SEIR model}
 \usage{
-\method{hist}{rSEIR}(x, y, type = c("time", "rate"), ...)
+\method{hist}{rSEIR}(x, y, type = c("time", "proportion"), ...)
 }
 \arguments{
 \item{x}{the output from simulation}
 
-\item{y}{the input infection rate or a certain time}
+\item{y}{the input infection proportion or a certain time}
 
 \item{type}{the type of the second argument}
 }
@@ -19,5 +19,5 @@
 \examples{
 model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 hist( model1, 81, type = "time" )
-hist( model1, 0.3, type = "rate" )
+hist( model1, 0.3, type = "proportion" )
 }
