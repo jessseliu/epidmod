@@ -4,7 +4,7 @@
 \alias{plot.rSEIR}
 \title{S3 plot method for stochastic SEIR model}
 \usage{
-\method{plot}{rSEIR}(x, ...)
+\method{plot}{rSEIR}(x)
 }
 \arguments{
 \item{x}{the output from simulation}

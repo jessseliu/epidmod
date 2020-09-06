@@ -9,3 +9,4 @@
 #'
 #' @docType package
 #' @name epidmod
+NULL

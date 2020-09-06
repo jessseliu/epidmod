@@ -4,7 +4,7 @@
 \alias{plot.rSEIQHRF}
 \title{S3 plot method for stochastic SEIQHRF model}
 \usage{
-\method{plot}{rSEIQHRF}(x, ...)
+\method{plot}{rSEIQHRF}(x)
 }
 \arguments{
 \item{x}{the output from simulation}

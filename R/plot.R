@@ -8,14 +8,7 @@
 #'
 #'@export
 
-plot.rSIR <- function(x,...){
-
-  lPoints <- function(..., log, axes, frame.plot,
-                      panel.first, panel.last) points(...)
-  lText <- function(..., log, axes, frame.plot,
-                    panel.first, panel.last) text(...)
-  lLines <- function(..., log, axes, frame.plot,
-                     panel.first, panel.last) lines(...)
+plot.rSIR <- function(x){
 
   # store the simulation value into vector
   t <- x$Simulation_Time
@@ -49,14 +42,7 @@ plot.rSIR <- function(x,...){
 #' plot(model1)
 #'
 #'@export
-plot.rSEIR <- function(x,...){
-
-  lPoints <- function(..., log, axes, frame.plot,
-                      panel.first, panel.last) points(...)
-  lText <- function(..., log, axes, frame.plot,
-                    panel.first, panel.last) text(...)
-  lLines <- function(..., log, axes, frame.plot,
-                     panel.first, panel.last) lines(...)
+plot.rSEIR <- function(x){
 
   # store the simulation value into vector
   t <- x$Simulation_Time
@@ -91,14 +77,7 @@ plot.rSEIR <- function(x,...){
 #' plot(model1)
 #'
 #'@export
-plot.rSEIQHRF <- function(x,...){
-
-  lPoints <- function(..., log, axes, frame.plot,
-                      panel.first, panel.last) points(...)
-  lText <- function(..., log, axes, frame.plot,
-                    panel.first, panel.last) text(...)
-  lLines <- function(..., log, axes, frame.plot,
-                     panel.first, panel.last) lines(...)
+plot.rSEIQHRF <- function(x){
 
   # store the simulation value into vector
   t <- x$Simulation_Time

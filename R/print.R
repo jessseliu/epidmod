@@ -23,13 +23,13 @@ print.rSIR <- function(x,...){
   cat("\nNo. groups:", 3)
 
 
-  # calculate the maximum infection rate and the corresponding position
+  # calculate the maximum infected proportion and the corresponding position
   i <- x$Infected_people
   n <- x$Total_people
   rate <- i/n
 
-  cat("\nBiggest infection rate = ", max(rate))
-  cat("\nTime to the biggest infection rate = ", x$Simulation_Time[which(rate == max(rate))[1]])
+  cat("\nBiggest infected proportion = ", max(rate))
+  cat("\nTime to the biggest infected proportion = ", x$Simulation_Time[which(rate == max(rate))[1]])
 
 
   cat("\n\n Model Parameters")
@@ -78,13 +78,13 @@ print.rSEIR <- function(x,...){
   cat("\nNo. days :", x$Simulation_Time[fre])
   cat("\nNo. groups:", 4)
 
-  # calculate the maximum infection rate and the corresponding position
+  # calculate the maximum infected proportion and the corresponding position
   i <- x$Infected_people
   n <- x$Total_people
   rate <- i/n
 
-  cat("\nBiggest infection rate = ", max(rate))
-  cat("\nTime to the biggest infection rate = ", x$Simulation_Time[which(rate == max(rate))[1]])
+  cat("\nBiggest infected proportion = ", max(rate))
+  cat("\nTime to the biggest infected proportion = ", x$Simulation_Time[which(rate == max(rate))[1]])
 
   cat("\n\n Model Parameters")
   cat("\n-----------------------\n")
@@ -134,13 +134,13 @@ print.rSEIQHRF <- function(x,...){
   cat("\nNo. days :", x$Simulation_Time[fre])
   cat("\nNo. groups:", 7)
 
-  # calculate the maximum infection rate and the corresponding position
+  # calculate the maximum infected proportion and the corresponding position
   i <- x$Infected_people
   n <- x$Total_people
   rate <- i/n
 
-  cat("\nBiggest infection rate = ", max(rate))
-  cat("\nTime to the biggest infection rate = ", x$Simulation_Time[which(rate == max(rate))[1]])
+  cat("\nBiggest infected proportion= ", max(rate))
+  cat("\nTime to the biggest infected proportion = ", x$Simulation_Time[which(rate == max(rate))[1]])
 
   cat("\n\n Model Parameters")
   cat("\n-----------------------\n")

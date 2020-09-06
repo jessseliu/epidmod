@@ -25,11 +25,11 @@ afterpeak_info.rSIR <- function(x,...){
   rate <- i/n
   cat("\n Peak Information")
   cat("\n-----------------------\n")
-  cat("\n Peak infection rate = ", max(rate))
+  cat("\n Peak infected proportion = ", max(rate))
 
-  # determine the position of maximum infection rate
+  # determine the position of maximum infected proportion
   m <- which(rate == max(rate))[1]
-  cat("\n Time to the biggest infection rate = ", t[m])
+  cat("\n Time to the infected proportion= ", t[m])
   cat("\n Number of infected people at the peak = ", i[m])
 
 
@@ -88,10 +88,10 @@ afterpeak_info.rSEIR <- function(x,...){
   cat("\n Peak Information")
   cat("\n-----------------------\n")
 
-  # determine the position of maximum infection rate
-  cat("\n Peak infection rate = ", max(rate))
+  # determine the position of maximum infected proportion
+  cat("\n Peak infected proportion = ", max(rate))
   m <- which(rate == max(rate))[1]
-  cat("\n Time to the biggest infection rate = ", t[m])
+  cat("\n Time to the biggest infected proportion = ", t[m])
   cat("\n Number of infected people at the peak = ", i[m])
 
 
@@ -149,11 +149,11 @@ afterpeak_info.rSEIQHRF <- function(x,...){
   rate <- i/n
   cat("\n Peak Information")
   cat("\n-----------------------\n")
-  cat("\n Peak infection rate = ", max(rate))
+  cat("\n Peak infected proportion = ", max(rate))
 
-  # determine the position of maximum infection rate
+  # determine the position of infected proportion
   m <- which(rate == max(rate))[1]
-  cat("\n Time to the biggest infection rate = ", t[m])
+  cat("\n Time to the biggest infected proportion= ", t[m])
   cat("\n Number of infected people at the peak = ", i[m])
 
   cat("\n\n After peak Information")

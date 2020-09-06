@@ -39,20 +39,20 @@ rSEIQHRF(
 \item{pars}{A numeric vector: (a.rate, e.rate, i.rate, h1.rate, q.rate, h2.rate, r1.rate, r2.rate, r3.rate, f.rate, pE, pSR, pIim, pQim, pHim).
 #' Description about pars
 *\code{a.rate} represents rate of arrival of people into the population.
-*\code{e.rate} represents individual being exposed rate at time t is e.rate / Nt.
+*\code{e.rate} represents individual effective contact rate.
 *\code{i.rate} represents the incubation period is 1/i.rate days.
-*\code{h1.rate}   represents infected individual requiring hospitalization rate at time t is h1.rate / Nt.
-*\code{q.rate }   represents infected individual self-quarantining rate at time t is q.rate / Nt.
-*\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t is h2.rate / Nt.
+*\code{h1.rate}   represents infected individual requiring hospitalization rate at time t.
+*\code{q.rate }   represents infected individual self-quarantining rate at time t.
+*\code{h2.rate}   represents self-isolated individual requiring hospitalization rate at time t.
 *\code{r1.rate}   represents recovery time for each infected individual is 1/ r1.rate.
 *\code{r2.rate}   represents recovery time for each individual who accepts hospitalization is 1/ r2.rate.
 *\code{r3.rate}   represents recovery time for each individual who is self-quarantined is is 1/ r3.rate.
-*\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t is f.rate / Nt.
+*\code{f.rate }   represents individual who accepts hospitalization case fatality rate at time t.
 *\code{pE}   represents probability that an arrival is exposed.
 *\code{pSR}  represents probability that an exposed individual self-recover and turns susceptible.
 *\code{pIim}  represents probability that an infected person is immune after recovery.
 *\code{pQim}   represents probability that a quarantined person  is immune after recovery.
-*\code{pHim}  represents probability that an individual who requires hospitalization recovers and  turns susceptible.}
+*\code{pHim}  represents probability that an individual who requires hospitalization is immune after recovery.}
 }
 \value{
 A numeric matrix with 10 columns.  Row i contains the values of (t, S_t, E_t, I_t, Q_t, H_t, R_t, F_t, N_t) at time t.

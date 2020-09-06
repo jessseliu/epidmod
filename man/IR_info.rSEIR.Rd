@@ -2,17 +2,17 @@
 % Please edit documentation in R/IR_info.R
 \name{IR_info.rSEIR}
 \alias{IR_info.rSEIR}
-\title{New  S3 method for gathering information from stochastic SEIR model at a given infection rate}
+\title{New  S3 method for gathering information from stochastic SEIR model at a given infected proportion}
 \usage{
 \method{IR_info}{rSEIR}(x, y, ...)
 }
 \arguments{
 \item{x}{the output from simulation}
 
-\item{y}{the input infection rate}
+\item{y}{the input infected proportion}
 }
 \description{
-\code{IR_info} returns the simulated information at a given infection rate for SEIR model
+\code{IR_info} returns the simulated information at a given infected proportion for SEIR model
 }
 \examples{
 model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))

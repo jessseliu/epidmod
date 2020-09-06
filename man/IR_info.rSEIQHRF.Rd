@@ -2,17 +2,17 @@
 % Please edit documentation in R/IR_info.R
 \name{IR_info.rSEIQHRF}
 \alias{IR_info.rSEIQHRF}
-\title{New  S3 method for gathering information from stochastic SEIQHRF model at a given infection rate}
+\title{New  S3 method for gathering information from stochastic SEIQHRF model at a given infected proportion}
 \usage{
 \method{IR_info}{rSEIQHRF}(x, y, ...)
 }
 \arguments{
 \item{x}{the output from simulation}
 
-\item{y}{the input infection rate}
+\item{y}{the input infected proportion}
 }
 \description{
-\code{IR_info} returns the simulated information at a given infection rate for SEIQHRF model
+\code{IR_info} returns the simulated information at a given infected proportion for SEIQHRF model
 }
 \examples{
 para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
