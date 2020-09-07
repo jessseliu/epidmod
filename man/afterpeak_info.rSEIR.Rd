@@ -4,10 +4,13 @@
 \alias{afterpeak_info.rSEIR}
 \title{New S3 method for gathering information from stochastic SEIR model after the peak}
 \usage{
-\method{afterpeak_info}{rSEIR}(x, ...)
+\method{afterpeak_info}{rSEIR}(x)
 }
 \arguments{
 \item{x}{the output from simulation}
+}
+\value{
+A information list
 }
 \description{
 \code{afterpeak_info} returns the peak information and time of infected reducing to certain level after the peak

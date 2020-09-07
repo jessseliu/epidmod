@@ -4,7 +4,7 @@
 \alias{IR_info}
 \title{New S3 method for gathering information from stochastic SIR model at a given infected proportion}
 \usage{
-IR_info(x, y, ...)
+IR_info(x, y)
 }
 \arguments{
 \item{x}{the output from simulation}

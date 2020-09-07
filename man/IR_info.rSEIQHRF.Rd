@@ -2,9 +2,9 @@
 % Please edit documentation in R/IR_info.R
 \name{IR_info.rSEIQHRF}
 \alias{IR_info.rSEIQHRF}
-\title{New  S3 method for gathering information from stochastic SEIQHRF model at a given infected proportion}
+\title{New S3 method for gathering information from stochastic SEIQHRF model at a given infected proportion}
 \usage{
-\method{IR_info}{rSEIQHRF}(x, y, ...)
+\method{IR_info}{rSEIQHRF}(x, y)
 }
 \arguments{
 \item{x}{the output from simulation}
@@ -15,9 +15,10 @@
 \code{IR_info} returns the simulated information at a given infected proportion for SEIQHRF model
 }
 \examples{
-para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
-model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )
-IR_info(model1, 0.1)
+para <- c( 1/10,  10, 0.01,  0.02, 0.2, 0.01, 1/20, 1/15, 1/30, 1/1000, 0.01, 0.2, 0.01, 0.02, 0.03)
+model1 <-rSEIQHRF(N0 = 500, S0 = 497, E0 = 0, I0 = 3, Q0 = 0, H0 = 0,
+                  R0 = 0, F0 = 0, days = 365, pars = para )
+IR_info(model1, 0.001)
 
 
 }

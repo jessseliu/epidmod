@@ -5,7 +5,7 @@
 #'
 #'
 #' @importFrom stats rexp runif
-#' @importFrom graphics hist matplot legend
+#' @importFrom graphics hist matplot legend par
 #'
 #' @docType package
 #' @name epidmod

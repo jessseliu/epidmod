@@ -4,7 +4,7 @@
 \alias{hist.rSEIQHRF}
 \title{S3 histogram for stochastic SEIQHRF model}
 \usage{
-\method{hist}{rSEIQHRF}(x, y, type = c("time", "proportion"), ...)
+\method{hist}{rSEIQHRF}(x, y, type = c("time", "proportion"))
 }
 \arguments{
 \item{x}{the output from simulation}

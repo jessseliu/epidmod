@@ -4,7 +4,9 @@
 \alias{IR_info.rSEIR}
 \title{New  S3 method for gathering information from stochastic SEIR model at a given infected proportion}
 \usage{
-\method{IR_info}{rSEIR}(x, y, ...)
+\method{IR_info}{rSEIR}(x, y)
+
+\method{IR_info}{rSEIR}(x, y)
 }
 \arguments{
 \item{x}{the output from simulation}
@@ -13,9 +15,14 @@
 }
 \description{
 \code{IR_info} returns the simulated information at a given infected proportion for SEIR model
+
+\code{IR_info} returns the simulated information at a given infected proportion for SEIQR model
 }
 \examples{
 model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+IR_info(model1, 0.3)
+
+model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
 IR_info(model1, 0.3)
 
 }

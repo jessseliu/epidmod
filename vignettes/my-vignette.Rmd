@@ -68,18 +68,30 @@ Most of the parameters have the same meaning, however, the user should be carefu
 
 
 
-## Usage of `rSEIQHRF`
-In this package, SEIQHRF is the most complicated model and it contains seven groups and much more parameters. The simulation is harder than previous ones but applying the function `rSEIQHRF` is still very easy to handle. The example is below:
+## Usage of `rSEIQR` and `rSEIQHRF`
+In this package, SEIQHRF is the most complicated model and it contains seven groups and much more parameters. The simulation is harder than previous ones but applying the function `rSEIQHRF` is still very easy to handle. The usage of `rSEIQR` is basically the simplified version of `rSEIQHRF`. The examples are below:
+
 
 ```{r}
-
-para1 <- c( 1/10,  10, 0.01,  0.02, 0.2, 0.01, 1/20, 1/15, 1/30, 1/1000, 0.01, 0.2, 0.01, 0.02, 0.03)
-model3 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0,
-                   R0 = 0, F0 = 0, days = 300, pars = para )
+model3 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
+para <- c( 1/10,  10, 0.01,  0.02, 0.2, 0.01, 1/20, 1/15, 1/30, 1/1000, 0.01, 0.2, 0.01, 0.02, 0.03)
+model4 <-rSEIQHRF(N0 = 500, S0 = 497, E0 = 0, I0 = 3, Q0 = 0, H0 = 0,
+                 R0 = 0, F0 = 0, days = 365, pars = para )
 
 ```
 
 Like previous functions, arguments are divided in two parts, the first half is still the initial value with more compartments and setting time, the other is about the stored parameters `pars`. Users should be really careful about the input parameters. The representations are below:
+
+### Parameters stored in `pars` of `rSEIR`
+
+* *a.rate*     rate of arrival of people into the population
+* *e.rate*     individual effective contact rate 
+* *i.rate*     the incubation period is 1/i.rate days
+* *q.rate*     infected individual self-quarantining rate at time t 
+* *r.rate*     recovery time for each infected individual is 1/ r.rate
+* *pE*         probability that an arrival is exposed.
+* *pSR*        probability that an exposed individual self-recover and turns susceptible.
+* *pIm*        probability that an infected person is immune after recovery
 
 ### Parameters stored in `pars` of `rSEIQHRF`
 
@@ -128,7 +140,7 @@ In this package, there are other functions  to extract information from the simu
 This function is useful when users would like find out how is the simulation with a given specific proportion of infected people. It will show the needed time to reach that given infection rate and the number of people in each group at that time. User should be careful about the input infection should be equal or lower than the maximum infected proportion (could be found in output of `print`).
 
 ```{r}
-IR_info(model1, 0.7)
+IR_info(model1, 0.5)
 ```
 
 
@@ -137,8 +149,8 @@ IR_info(model1, 0.7)
 This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infected proportion.
 
 ```{r}
-hist( model1, 81, type = "time", fig.width = 10, fig.height = 6 )
-hist( model1, 0.7, type = "rate", fig.width = 10, fig.height = 6 )
+hist( model1, 81, type = "time")
+hist( model1, 0.4, type = "proportion" )
 ```
 
 

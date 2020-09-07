@@ -4,7 +4,7 @@
 \alias{afterpeak_info.rSEIQHRF}
 \title{New S3 method for gathering information from stochastic SEIQHRF model after the peak}
 \usage{
-\method{afterpeak_info}{rSEIQHRF}(x, ...)
+\method{afterpeak_info}{rSEIQHRF}(x)
 }
 \arguments{
 \item{x}{the output from simulation}

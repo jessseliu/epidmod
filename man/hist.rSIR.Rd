@@ -4,7 +4,7 @@
 \alias{hist.rSIR}
 \title{S3 histogram for stochastic SIR model}
 \usage{
-\method{hist}{rSIR}(x, y, type = c("time", "proportion"), ...)
+\method{hist}{rSIR}(x, y, type = c("time", "proportion"))
 }
 \arguments{
 \item{x}{the output from simulation}

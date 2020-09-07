@@ -36,7 +36,7 @@
 #'
 #' @return A numeric matrix with 10 columns.  Row i contains the values of (t, S_t, E_t, I_t, Q_t, H_t, R_t, F_t, N_t) at time t.
 #' @examples
-#' para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
+#' para <- c( 1/10,  10, 0.01,  0.02, 0.2, 0.01, 1/20, 1/15, 1/30, 1/1000, 0.01, 0.2, 0.01, 0.02, 0.03)
 #' model1 <- rSEIQHRF(N0 = 100, S0 = 99, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 100,pars = para )
 #' model1
 #' print(model1)

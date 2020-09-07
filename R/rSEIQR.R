@@ -25,15 +25,12 @@
 #'
 #' @return A numeric matrix with 7 columns.  Row i contains the values of (t, S_t, E_t, I_t, Q_t, R_t, N_t) at time t.
 #' @examples
-#' model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0,  Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 1/4, 0.15, 1/5, 0.3, 0.2, 0.7))
+#' model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
 #' model1
 #' print(model1)
 #'
 #' @export
-
-
-
-rSEIR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, E0 = N0 - I0 - S0, days = 100 , pars = c(3, 2, 2, 0.15, 1, 0.9, 0.3, 0.1)) {
+rSEIQR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, Q0 = 0, E0 = N0 - I0 - S0, days = 100 , pars = c(3, 2, 2, 0.15, 1, 0.9, 0.3, 0.1)) {
 
   if (I0 + S0 + E0 + Q0 + R0 > N0) {
     stop("There can be at most N people who are susceptible or infected or exposed")

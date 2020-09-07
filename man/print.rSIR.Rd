@@ -4,7 +4,7 @@
 \alias{print.rSIR}
 \title{S3 print method for stochastic SIR model}
 \usage{
-\method{print}{rSIR}(x, ...)
+\method{print}{rSIR}(x)
 }
 \arguments{
 \item{x}{the output from simulation}

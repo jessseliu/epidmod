@@ -10,7 +10,7 @@
 #'hist( model1, 0.7, type = "proportion" )
 #'@export
 #'
-hist.rSIR <- function(x, y, type = c("time", "proportion"), ...){
+hist.rSIR <- function(x, y, type = c("time", "proportion")){
 
   # store the simulation value into vector and extract the type
   type <- match.arg(type)
@@ -78,7 +78,7 @@ hist.rSIR <- function(x, y, type = c("time", "proportion"), ...){
 #'@export
 #'
 
-hist.rSEIR <- function(x, y, type = c("time", "proportion"), ...){
+hist.rSEIR <- function(x, y, type = c("time", "proportion")){
 
 
   # store the simulation value into vector and extract the type
@@ -157,7 +157,7 @@ hist.rSEIR <- function(x, y, type = c("time", "proportion"), ...){
 #' hist( model1, 0.1, type = "proportion" )
 #'@export
 #'
-hist.rSEIQHRF <- function(x, y, type = c("time", "proportion"), ...){
+hist.rSEIQHRF <- function(x, y, type = c("time", "proportion")){
 
 
   # store the simulation value into vector and extract the type

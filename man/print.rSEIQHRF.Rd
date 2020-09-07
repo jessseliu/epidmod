@@ -4,7 +4,7 @@
 \alias{print.rSEIQHRF}
 \title{S3 print method for stochastic SEIQHRF model}
 \usage{
-\method{print}{rSEIQHRF}(x, ...)
+\method{print}{rSEIQHRF}(x)
 }
 \arguments{
 \item{x}{the output from simulation}
