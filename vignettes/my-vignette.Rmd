@@ -31,10 +31,10 @@ library(epidmod)
 
 ```{r, error = FALSE}
 
-model1 <- rSIR (N0 = 1000, I0 = 0, S0 = 1000, days = 300,
+model1 <- rSIR (N0 = 1000, I0 = 50, S0 = 950, days = 300,
                 pars = c(1/10, 1, 1/5, 0.1, 0.1))
-model2 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, 
-                pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+model2 <- rSEIR(N0 = 1000, I0 = 50, S0 = 949, R0 = 0, E0 = 1 , days = 300, 
+                pars = c(1/10, 1, 1/4, 1/5, 0, 0.1, 0.1))
 
 ```
    
@@ -129,7 +129,24 @@ plot(model1)
 
 ```
 
-The plot method produces a basic time series plot with coordinate time and number of people. Different groups of curves are marked with different colors, the line type and point shape of the curve with legends on top right (In order to ensure that the image is easy to distinguish, in the SEIQHRF model, only color but line types look the same). Basically, this is a very fundamental plot method but still provide the users a very clear look about the trend of the entire simulation.
+The plot method produces a basic time series plot with coordinate time and number of people. Different groups of curves are marked with different colors, the line type and point shape of the curve with legends on top right (In order to ensure that the image is easy to distinguish, in the SEIQHRF model, only color but line types look the same). Basically, this is a very fundamental plot method but still provide the users a very clear look about the trend of the entire simulation and help them to understand the meaning of each parameter. For example, if we make some adjustment on the parameter as below, the plot will be like:
+```{r, fig.width = 8, fig.height = 6}
+model1 <- rSIR (N0 = 1000, I0 = 50, S0 = 950, days = 300,
+                pars = c(1/10, 1, 1/5, 0.1, 0.1))
+
+model5 <- rSIR (N0 = 1000, I0 = 50, S0 = 950, days = 300,
+                pars = c(1/10, 1.5, 0.1, 0.1, 0.1))
+plot(model5)
+
+```
+Comparing Figure11 with Figure12, we can clearly see that the peak of infection is much higher than before and the number of susceptible goes to a lower level. This is reasonable since we select a higher contact rate $(\beta = 1\rightarrow\beta = 1.5)$ which indicates the disease in model5 is more contagious. Figure12 also suggests it require more time for recovered people to reach stable level e which is due to the lower recovery rate $(\delta = 0.2 \rightarrow \delta = 0.1)$ in model5 and this indicates the average recovery time increases from $ 1/0.2 =5 $ to $ 1/0.1 = 10$. If we keep the parameter fixed and change the input number of people in each groups, we will find out more about the impact of initial value in each stochastic model.
+
+```{r, fig.width = 8, fig.height = 6}
+plot(model2)
+
+```
+The parameter settings in model1 and model2 are basically the same except that there is a parameter $\beta = 0.25$ (in SEIR model) representing $1/0.25 = 4$ incubation period in model2. Comparing Figure 13 with Figure 11, it illustrates that the infected group in Figure 11 is divided into two new groups: Exposed and Infected in Figure 13 which is coincident with the meaning of incubation period(explained in Section2.3). The new phenomenon in Figure 13 is that there seems less recovered people and more susceptible people in the later stages of the simulation for SEIR model. This could be treated as the effect of adding a new compartment on the original model or explained by the interaction effect between the Infected group and Exposed group.
+
 
 
 ## Other S3 methods
@@ -137,7 +154,7 @@ In this package, there are other functions  to extract information from the simu
 
 ### 1.`IR_info` 
 
-This function is useful when users would like find out how is the simulation with a given specific proportion of infected people. It will show the needed time to reach that given infection rate and the number of people in each group at that time. User should be careful about the input infection should be equal or lower than the maximum infected proportion (could be found in output of `print`).
+This function produces some basic information similar with that in `print` but with a specific infected proportion I(t)/N(t) and it is useful when users would like find out how is the simulation with a given specific proportion of infected people. The original intention of designing it is to make the whole simulation more flexible and it also show the needed time to reach that given infection rate and the number of people in each group at that time. User should be careful about the input infection should be equal or lower than the maximum infected proportion (could be found in output of `print`).
 
 ```{r}
 IR_info(model1, 0.3)
@@ -146,8 +163,7 @@ IR_info(model1, 0.3)
 
 ### 2. `hist` 
 
-This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infected proportion.
-
+This function is built to study the distribution of the number of people in each groups at a given time and total number of simulation. The core idea is to simulate the same model with fixed input and parameters many times then choose a selected input time and collect data about the number of people in each group at that time in each simulation to produce the histogram for each group. This is very helpful since if we can find some pattern from the distribution of groups with more concerns(for example, the infected in all models or the group of people who requires hospitalization), it will help people better prepared for restricting and controlling the disease. The second argument is the input time(should be less than the total simulation time) and third argument is to determine the total number of simulation. The output of this function is multiple histograms.
 ```{r}
 model5 <- rSIR (N0 = 1000, I0 = 200, S0 = 800, days = 300,
                 pars = c(1/10, 1, 1/5, 0.1, 0.1))
@@ -158,7 +174,7 @@ hist( model5, 70, 100)
 
 
 ### 3. `afterpeak_info` 
-This function return the peak information about the simulation and after peak, the time until the infected reduce to 50%, 30% and 10% of the maximum infected. It will help the users to study the after peak information and better assess the impact of the epidemic.
+This function returns the peak information about the simulation and after peak, the time until the infected reduce to 50%, 30% and 10% of the maximum infected. It will help the users to study the after peak information, estimate time when the epidemic will come to an end and better assess the impact of the epidemic. The usage of this function is quite easy with only one input but it is very effective when predicting how long the disease will affect society negatively and estimating the revival time of society and economics. 
 ```{r}
 afterpeak_info(model1)
 
