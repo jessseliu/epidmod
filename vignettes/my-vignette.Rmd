@@ -149,8 +149,8 @@ IR_info(model1, 0.5)
 This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infected proportion.
 
 ```{r}
-hist( model1, 81, type = "time")
-hist( model1, 0.4, type = "proportion" )
+hist( model1, 100, 100)
+
 ```
 
 
