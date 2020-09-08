@@ -6,10 +6,10 @@
 \usage{
 rSEIR(
   N0 = 1000,
-  I0 = 0,
   S0 = 999,
-  R0 = 0,
-  E0 = N0 - I0 - S0,
+  I0 = 0,
+  E0 = 0,
+  R0 = N0 - I0 - E0,
   days = 100,
   pars = c(3, 2, 2, 1, 0.9, 0.3, 0.1)
 )
@@ -17,13 +17,13 @@ rSEIR(
 \arguments{
 \item{N0}{An integer. The population size at time 0.}
 
-\item{I0}{An integer. The initial number of infected people.}
-
 \item{S0}{An integer. The initial number of susceptible people.}
 
-\item{R0}{An integer. The initial number of recovered people.}
+\item{I0}{An integer. The initial number of infected people.}
 
 \item{E0}{An integer. The initial number of exposed people.}
+
+\item{R0}{An integer. The initial number of recovered people.}
 
 \item{days}{An integer. The number of days for which to simulate.}
 
@@ -45,7 +45,7 @@ A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t
 recover people, total number of people.
 }
 \examples{
-model1 <- rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100,  pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+model1 <- rSEIR(N0 = 100, S0 = 99,  I0 = 0, E0 = 1 , R0 = 0,  days = 100,  pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 model1
 print(model1)
 

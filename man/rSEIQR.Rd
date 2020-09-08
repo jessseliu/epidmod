@@ -6,11 +6,11 @@
 \usage{
 rSEIQR(
   N0 = 1000,
-  I0 = 0,
   S0 = 999,
-  R0 = 0,
+  E0 = 1,
+  I0 = 0,
   Q0 = 0,
-  E0 = N0 - I0 - S0,
+  R0 = N0 - S0 - E0 - I0 - Q0,
   days = 100,
   pars = c(3, 2, 2, 0.15, 1, 0.9, 0.3, 0.1)
 )
@@ -18,15 +18,15 @@ rSEIQR(
 \arguments{
 \item{N0}{An integer. The population size at time 0.}
 
-\item{I0}{An integer. The initial number of infected people.}
-
 \item{S0}{An integer. The initial number of susceptible people.}
 
-\item{R0}{An integer. The initial number of recovered people.}
+\item{E0}{An integer. The initial number of exposed people.}
+
+\item{I0}{An integer. The initial number of infected people.}
 
 \item{Q0}{An integer. The initial number of quarantined people.}
 
-\item{E0}{An integer. The initial number of exposed people.}
+\item{R0}{An integer. The initial number of recovered people.}
 
 \item{days}{An integer. The number of days for which to simulate.}
 

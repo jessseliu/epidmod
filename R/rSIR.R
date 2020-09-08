@@ -6,8 +6,8 @@
 #' recover people, total number of people.
 #'
 #' @param N0 An integer. The population size at time 0.
-#' @param I0 An integer. The initial number of infected people.
 #' @param S0 An integer. The initial number of susceptible people.
+#' @param I0 An integer. The initial number of infected people.
 #' @param R0 An integer. The initial number of recovered people.
 #' @param days An integer. The number of days for which to simulate.
 #' @param pars A numeric vector: (a.rate, i.rate, r.rate, pI, pIm). Description about pars
@@ -19,16 +19,14 @@
 
 #' @return A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t, N_t) at time t.
 #' @examples
-#' model1 <- rSIR (N0 = 100, I0 = 0, S0 = 100, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
+#' model1 <- rSIR (N0 = 100, S0 = 100, I0 = 0, R0 = 0,  days = 100, pars = c(1, 4, 2, 0.3, 0.7))
 #' model1
 #' print(model1)
 #' plot(model1)
 #'
 #' @export
 
-
-
-rSIR <- function(N0 = 1000 , I0 = 0  , R0 = 0, S0 = N0 - I0 - R0,  days = 100 , pars = c(1, 2, 1, 0.1, 0.9)) {
+rSIR <- function(N0 = 1000 , S0 = 1000, I0 = 0  , R0 = N0 - I0 - S0,   days = 100 , pars = c(1, 2, 1, 0.1, 0.9)) {
 
   if (I0 + S0 > N0) {
     stop("There can be at most N people who are susceptible or infected")
@@ -49,7 +47,7 @@ rSIR <- function(N0 = 1000 , I0 = 0  , R0 = 0, S0 = N0 - I0 - R0,  days = 100 , 
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St", "It", "Rt", "Nt")
-  output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Infected_people = res[,3],
+  output <- list(  Set = c(N0, S0, I0, R0), Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Infected_people = res[,3],
                   Immune_people = res[,4], Total_people = res[,5])
   class(output) <- "rSIR"
   return(output)

@@ -6,10 +6,10 @@
 #' recover people, total number of people.
 #'
 #' @param N0 An integer. The population size at time 0.
-#' @param I0 An integer. The initial number of infected people.
 #' @param S0 An integer. The initial number of susceptible people.
-#' @param R0 An integer. The initial number of recovered people.
+#' @param I0 An integer. The initial number of infected people.
 #' @param E0 An integer. The initial number of exposed people.
+#' @param R0 An integer. The initial number of recovered people.
 #' @param days An integer. The number of days for which to simulate.
 #' @param pars A numeric vector: (a.rate, e.rate, i.rate, r.rate, pE, pSR, pIm).
 #' Description about pars
@@ -23,7 +23,7 @@
 #'
 #' @return A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t, R_t, N_t) at time t.
 #' @examples
-#' model1 <- rSEIR(N0 = 100, I0 = 0, S0 = 99, R0 = 0, E0 = 1 , days = 100,  pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+#' model1 <- rSEIR(N0 = 100, S0 = 99,  I0 = 0, E0 = 1 , R0 = 0,  days = 100,  pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 #' model1
 #' print(model1)
 #'
@@ -31,7 +31,7 @@
 
 
 
-rSEIR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, E0 = N0 - I0 - S0, days = 100 , pars = c(3, 2, 2, 1, 0.9, 0.3, 0.1)) {
+rSEIR <- function(N0 = 1000 , S0 = 999, I0 = 0, E0 = 0,  R0 = N0 - I0 - E0 , days = 100 , pars = c(3, 2, 2, 1, 0.9, 0.3, 0.1)) {
 
   if (I0 + S0 + E0 + R0 > N0) {
     stop("There can be at most N people who are susceptible or infected or exposed")
@@ -52,7 +52,7 @@ rSEIR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, E0 = N0 - I0 - S0, days 
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St","Et", "It", "Rt", "Nt")
-  output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
+  output <- list(  Set = c(N0, S0, E0, I0, R0), Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
                    Infected_people = res[,4], Immune_people = res[,5], Total_people = res[,6])
   class(output) <- "rSEIR"
   return(output)

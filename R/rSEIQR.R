@@ -30,7 +30,7 @@
 #' print(model1)
 #'
 #' @export
-rSEIQR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, Q0 = 0, E0 = N0 - I0 - S0, days = 100 , pars = c(3, 2, 2, 0.15, 1, 0.9, 0.3, 0.1)) {
+rSEIQR <- function(N0 = 1000 , S0 = 999,  E0 = 1,  I0 = 0, Q0 = 0, R0 = N0 - S0 - E0 - I0 - Q0,   days = 100 , pars = c(3, 2, 2, 0.15, 1, 0.9, 0.3, 0.1)) {
 
   if (I0 + S0 + E0 + Q0 + R0 > N0) {
     stop("There can be at most N people who are susceptible or infected or exposed")
@@ -51,7 +51,7 @@ rSEIQR <- function(N0 = 1000 , I0 = 0, S0 = 999, R0 = 0, Q0 = 0, E0 = N0 - I0 - 
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St","Et", "It", "Qt","Rt", "Nt")
-  output <- list(  Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
+  output <- list(  Set = c(N0, S0, E0, I0, Q0, R0), Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
                    Infected_people = res[,4], Quarantined_people = res[,5], Immune_people = res[,6], Total_people = res[,7])
   class(output) <- "rSEIQR"
   return(output)

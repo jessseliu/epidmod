@@ -6,9 +6,9 @@
 \usage{
 rSIR(
   N0 = 1000,
+  S0 = 1000,
   I0 = 0,
-  R0 = 0,
-  S0 = N0 - I0 - R0,
+  R0 = N0 - I0 - S0,
   days = 100,
   pars = c(1, 2, 1, 0.1, 0.9)
 )
@@ -16,11 +16,11 @@ rSIR(
 \arguments{
 \item{N0}{An integer. The population size at time 0.}
 
+\item{S0}{An integer. The initial number of susceptible people.}
+
 \item{I0}{An integer. The initial number of infected people.}
 
 \item{R0}{An integer. The initial number of recovered people.}
-
-\item{S0}{An integer. The initial number of susceptible people.}
 
 \item{days}{An integer. The number of days for which to simulate.}
 
@@ -39,7 +39,7 @@ A numeric matrix with 5 columns.  Row i contains the values of (t, S_t, I_t, R_t
 recover people, total number of people.
 }
 \examples{
-model1 <- rSIR (N0 = 100, I0 = 0, S0 = 100, days = 100,pars = c(1, 4, 2, 0.3, 0.7))
+model1 <- rSIR (N0 = 100, S0 = 100, I0 = 0, R0 = 0,  days = 100, pars = c(1, 4, 2, 0.3, 0.7))
 model1
 print(model1)
 plot(model1)
