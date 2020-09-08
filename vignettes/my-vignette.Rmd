@@ -82,7 +82,7 @@ model4 <-rSEIQHRF(N0 = 500, S0 = 497, E0 = 0, I0 = 3, Q0 = 0, H0 = 0,
 
 Like previous functions, arguments are divided in two parts, the first half is still the initial value with more compartments and setting time, the other is about the stored parameters `pars`. Users should be really careful about the input parameters. The representations are below:
 
-### Parameters stored in `pars` of `rSEIR`
+### Parameters stored in `pars` of `rSEIQR`
 
 * *a.rate*     rate of arrival of people into the population
 * *e.rate*     individual effective contact rate 
@@ -140,7 +140,7 @@ In this package, there are other functions  to extract information from the simu
 This function is useful when users would like find out how is the simulation with a given specific proportion of infected people. It will show the needed time to reach that given infection rate and the number of people in each group at that time. User should be careful about the input infection should be equal or lower than the maximum infected proportion (could be found in output of `print`).
 
 ```{r}
-IR_info(model1, 0.5)
+IR_info(model1, 0.3)
 ```
 
 
@@ -149,7 +149,9 @@ IR_info(model1, 0.5)
 This function produce the histogram for each groups at a given time or a given infection rate and it enable users to study the distribution of number of people in this simulation. Again, the second argument must be equal or lower than the total simulation time or the maximum infected proportion.
 
 ```{r}
-hist( model1, 100, 100)
+model5 <- rSIR (N0 = 1000, I0 = 200, S0 = 800, days = 300,
+                pars = c(1/10, 1, 1/5, 0.1, 0.1))
+hist( model5, 70, 100)
 
 ```
 

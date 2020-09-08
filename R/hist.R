@@ -22,6 +22,7 @@ hist.rSIR <- function(x, y, nsim = 100){
   S0 <- x$Set[2]
   I0 <- x$Set[3]
   R0 <- x$Set[4]
+  day <- x$Set[5]
   par <- x$Param
   t <- x$Simulation_Time
   s <- numeric(nsim)
@@ -32,20 +33,23 @@ hist.rSIR <- function(x, y, nsim = 100){
     stop("Please enter a valid time ")
   }else{
     # store the value of first simulation
-    s[1] <- x$Susceptible_people[y]
-    i[1] <- x$Infected_people[y]
-    r[1] <- x$Immune_people[y]
+    which_one <- sum((x$Simulation_Time - y) <= 0)
+    s[1] <- x$Susceptible_people[which_one]
+    i[1] <- x$Infected_people[which_one]
+    r[1] <- x$Immune_people[which_one]
 
     # repeat the simulation to get the histogram
-    for (i in 1:nsim-1){
-      model <- rSIR(N0, S0, I0, R0, pars = par )
-      s[i+1] <- model$Susceptible_people[y]
-      i[i+1] <- model$Infected_people[y]
-      r[i+1] <- model$Immune_people[y]
+    for (j in 1:nsim-1){
+      model <- rSIR(N0, S0, I0, R0, days = day, pars = par )
+      which_one <- sum((model$Simulation_Time - y) <= 0)
+      s[j+1] <- model$Susceptible_people[which_one]
+      i[j+1] <- model$Infected_people[which_one]
+      r[j+1] <- model$Immune_people[which_one]
     }
       hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
       hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
-      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")}
+      hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
+      }
 
 }
 
@@ -77,6 +81,7 @@ hist.rSEIR <- function(x, y, nsim = 100){
   E0 <- x$Set[3]
   I0 <- x$Set[4]
   R0 <- x$Set[5]
+  day <- x$Set[6]
   par <- x$Param
   t <- x$Simulation_Time
   s <- numeric(nsim)
@@ -88,23 +93,26 @@ hist.rSEIR <- function(x, y, nsim = 100){
     stop("Please enter a valid time ")
   }else{
     # store the value of first simulation
-    s[1] <- x$Susceptible_people[y]
-    e[1] <- x$Exposed_people[y]
-    i[1] <- x$Infected_people[y]
-    r[1] <- x$Immune_people[y]
+    which_one <- sum((x$Simulation_Time - y) <= 0)
+    s[1] <- x$Susceptible_people[which_one]
+    e[1] <- x$Exposed_people[which_one]
+    i[1] <- x$Infected_people[which_one]
+    r[1] <- x$Immune_people[which_one]
 
     # repeat the simulation to get the histogram
-    for (i in 1:nsim-1){
-      model <- rSEIR(N0, S0, E0, I0, R0, pars = par )
-      s[i+1] <- model$Susceptible_people[y]
-      e[i+1] <- model$Exposed_people[y]
-      i[i+1] <- model$Infected_people[y]
-      r[i+1] <- model$Immune_people[y]
+    for (j in 1:(nsim-1)){
+      model <- rSEIR(N0, S0, E0, I0, R0, days = day, pars = par )
+      which_one <- sum((model$Simulation_Time - y) <= 0)
+      s[j+1] <- model$Susceptible_people[which_one]
+      e[j+1] <- model$Exposed_people[which_one]
+      i[j+1] <- model$Infected_people[which_one]
+      r[j+1] <- model$Immune_people[which_one]
     }
     hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
     hist(e,  prob = TRUE,  col = "darkgoldenrod1" , main = "Exposed")
     hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
-    hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")}
+    hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
+    }
 
 }
 
@@ -135,6 +143,7 @@ hist.rSEIQR <- function(x, y, nsim = 100){
   I0 <- x$Set[4]
   Q0 <- x$Set[5]
   R0 <- x$Set[6]
+  day <- x$Set[7]
   par <- x$Param
   t <- x$Simulation_Time
   s <- numeric(nsim)
@@ -147,26 +156,30 @@ hist.rSEIQR <- function(x, y, nsim = 100){
     stop("Please enter a valid time ")
   }else{
     # store the value of first simulation
-    s[1] <- x$Susceptible_people[y]
-    e[1] <- x$Exposed_people[y]
-    i[1] <- x$Infected_people[y]
-    q[1] <- x$Quarantined_people[y]
-    r[1] <- x$Immune_people[y]
+    which_one <- sum((x$Simulation_Time - y) <= 0)
+    s[1] <- x$Susceptible_people[which_one]
+    e[1] <- x$Exposed_people[which_one]
+    i[1] <- x$Infected_people[which_one]
+    q[1] <- x$Quarantined_people[which_one]
+    r[1] <- x$Immune_people[which_one]
 
     # repeat the simulation to get the histogram
-    for (i in 1:nsim-1){
-      model <- rSEIQR(N0, S0, E0, I0, Q0, R0, pars = par )
-      s[i+1] <- model$Susceptible_people[y]
-      e[i+1] <- model$Exposed_people[y]
-      i[i+1] <- model$Infected_people[y]
-      q[i+1] <- model$Quarantined_people[y]
-      r[i+1] <- model$Immune_people[y]
+    for (j in 1:(nsim-1)){
+      model <- rSEIQR(N0, S0, E0, I0, Q0, R0, days = day, pars = par )
+      which_one <- sum((model$Simulation_Time - y) <= 0)
+      s[j+1] <- model$Susceptible_people[which_one]
+      e[j+1] <- model$Exposed_people[which_one]
+      i[j+1] <- model$Infected_people[which_one]
+      q[j+1] <- model$Quarantined_people[which_one]
+      r[j+1] <- model$Immune_people[which_one]
     }
+
     hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
     hist(e,  prob = TRUE,  col = "darkgoldenrod1" , main = "Exposed")
     hist(i,  prob = TRUE,  col = "firebrick1", main = "Infected”")
     hist(q,  prob = TRUE,  col = "black", main = "Quarantined")
-    hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")}
+    hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
+    }
 
 }
 
@@ -202,6 +215,7 @@ hist.rSEIQHRF <- function(x, y, nsim = 100){
   H0 <- x$Set[6]
   R0 <- x$Set[7]
   F0 <- x$Set[8]
+  day <- x$Set[9]
   par <- x$Param
   t <- x$Simulation_Time
   s <- numeric(nsim)
@@ -216,24 +230,26 @@ hist.rSEIQHRF <- function(x, y, nsim = 100){
     stop("Please enter a valid time ")
   }else{
     # store the value of first simulation
-    s[1] <- x$Susceptible_people[y]
-    e[1] <- x$Exposed_people[y]
-    i[1] <- x$Infected_people[y]
-    q[1] <- x$Quarantined_people[y]
-    h[1] <- x$Hostipalization_people
-    r[1] <- x$Immune_people[y]
-    f[1] <- x$Fatality_case[y]
+    which_one <- sum((x$Simulation_Time - y) <= 0)
+    s[1] <- x$Susceptible_people[which_one]
+    e[1] <- x$Exposed_people[which_one]
+    i[1] <- x$Infected_people[which_one]
+    q[1] <- x$Quarantined_people[which_one]
+    h[1] <- x$Hostipalization_people[which_one]
+    r[1] <- x$Immune_people[which_one]
+    f[1] <- x$Fatality_case[which_one]
 
     # repeat the simulation to get the histogram
-    for (i in 1:nsim-1){
-      model <- rSEIQHRF(N0, S0, E0, I0, Q0, H0, R0, F0, pars = par )
-      s[i+1] <- model$Susceptible_people[y]
-      e[i+1] <- model$Exposed_people[y]
-      i[i+1] <- model$Infected_people[y]
-      q[i+1] <- model$Quarantined_people[y]
-      h[i+1] <- model$Hostipalization_people
-      r[i+1] <- model$Immune_people[y]
-      f[i+1] <- model$Fatality_case[y]
+    for (j in 1:(nsim-1)){
+      model <- rSEIQHRF(N0, S0, E0, I0, Q0, H0, R0, F0, days = day, pars = par )
+      which_one <- sum((x=model$Simulation_Time - y) <= 0)
+      s[j+1] <- model$Susceptible_people[which_one]
+      e[j+1] <- model$Exposed_people[which_one]
+      i[j+1] <- model$Infected_people[which_one]
+      q[j+1] <- model$Quarantined_people[which_one]
+      h[j+1] <- model$Hostipalization_people[which_one]
+      r[j+1] <- model$Immune_people[which_one]
+      f[j+1] <- model$Fatality_case[which_one]
     }
     hist(s,  prob = TRUE, col = "burlywood1" , main = "Susceptible")
     hist(e,  prob = TRUE,  col = "darkgoldenrod1" , main = "Exposed")
@@ -241,8 +257,8 @@ hist.rSEIQHRF <- function(x, y, nsim = 100){
     hist(q,  prob = TRUE,  col = "black", main = "Quarantined")
     hist(h,  prob = TRUE,  col = "chocolate1", main = "Requiring Hospitalization")
     hist(r,  prob = TRUE,  col = "seagreen1", main = "Recovered")
-    hist(f,  prob = TRUE,  col = "brown1", main = "Fatality")}
-
+    hist(f,  prob = TRUE,  col = "brown1", main = "Fatality")
+    }
 }
 
 

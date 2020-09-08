@@ -51,7 +51,7 @@ rSEIQR <- function(N0 = 1000 , S0 = 999,  E0 = 1,  I0 = 0, Q0 = 0, R0 = N0 - S0 
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St","Et", "It", "Qt","Rt", "Nt")
-  output <- list(  Set = c(N0, S0, E0, I0, Q0, R0), Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
+  output <- list(  Set = c(N0, S0, E0, I0, Q0, R0, days), Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Exposed_people = res[,3],
                    Infected_people = res[,4], Quarantined_people = res[,5], Immune_people = res[,6], Total_people = res[,7])
   class(output) <- "rSEIQR"
   return(output)

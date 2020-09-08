@@ -47,7 +47,7 @@ rSIR <- function(N0 = 1000 , S0 = 1000, I0 = 0  , R0 = N0 - I0 - S0,   days = 10
   # Convert the list to a matrix
   res <- do.call(rbind, res)
   colnames(res) <- c("t", "St", "It", "Rt", "Nt")
-  output <- list(  Set = c(N0, S0, I0, R0), Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Infected_people = res[,3],
+  output <- list(  Set = c(N0, S0, I0, R0, days), Param = pars, Simulation_Time = res[,1], Susceptible_people = res[,2], Infected_people = res[,3],
                   Immune_people = res[,4], Total_people = res[,5])
   class(output) <- "rSIR"
   return(output)
