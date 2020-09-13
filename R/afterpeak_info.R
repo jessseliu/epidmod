@@ -74,7 +74,8 @@ afterpeak_info.rSIR <- function(x){
 #' @param x the output from simulation
 #' @return A information list
 #' @examples
-#' model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+#' model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1,
+#'                 days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 #' afterpeak_info(model1)
 #'@export
 #'
@@ -135,7 +136,8 @@ afterpeak_info.rSEIR <- function(x){
 #' \code{afterpeak_info} returns the peak information and time of infected reducing to certain level after the peak
 #' @param x the output from simulation
 #' @examples
-#' model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
+#' model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,
+#'                  days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
 #' afterpeak_info(model1)
 #'@export
 #'
@@ -197,7 +199,8 @@ afterpeak_info.rSEIQR <- function(x){
 #' @param x the output from simulation
 #' @examples
 #' para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
-#' model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )))
+#' model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0,
+#'                    H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )))
 #' afterpeak_info(model1)
 #'@export
 #'

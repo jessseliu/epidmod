@@ -38,7 +38,8 @@ plot.rSIR <- function(x){
 #' \code{plot} returns the time series plot of simulated SEIR model
 #' @param x the output from simulation
 #' @examples
-#' model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+#' model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 ,
+#'                 days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 #' plot(model1)
 #'
 #'@export
@@ -72,7 +73,8 @@ plot.rSEIR <- function(x){
 #' \code{plot} returns the time series plot of simulated SEIQR model
 #' @param x the output from simulation
 #' @examples
-#' model1 <- rSEIQR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 0.15, 1/5, 0.3, 0.2, 0.7))
+#' model1 <- rSEIQR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 ,
+#'                  days = 300, pars = c(1/12, 1, 1/4, 0.15, 1/5, 0.3, 0.2, 0.7))
 #' plot(model1)
 #'
 #'@export
@@ -108,7 +110,8 @@ plot.rSEIQR <- function(x){
 #' @param x the output from simulation
 #' @examples
 #' para <- c(4,2,1,2,1,3,1,2,1,2,0.9, 0.3, 0.4,0.1, 0.1)
-#' model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0, Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )
+#' model1 <- rSEIQHRF(N0 = 1000, S0 = 999, E0 = 1, I0 = 0,
+#'                    Q0 = 0, H0 = 0, R0 = 0, F0 = 0, days = 300, pars = para )
 #' plot(model1)
 #'
 #'@export
