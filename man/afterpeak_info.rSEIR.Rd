@@ -16,6 +16,7 @@ A information list
 \code{afterpeak_info} returns the peak information and time of infected reducing to certain level after the peak
 }
 \examples{
-model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1 , days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+model1 <- rSEIR(N0 = 1000, I0 = 0, S0 = 999, R0 = 0, E0 = 1,
+                days = 300, pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 afterpeak_info(model1)
 }

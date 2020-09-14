@@ -13,6 +13,7 @@
 \code{afterpeak_info} returns the peak information and time of infected reducing to certain level after the peak
 }
 \examples{
-model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
+model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,
+                 days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
 afterpeak_info(model1)
 }

@@ -45,7 +45,8 @@ A numeric matrix with 6 columns.  Row i contains the values of (t, S_t, E_t, I_t
 recover people, total number of people.
 }
 \examples{
-model1 <- rSEIR(N0 = 100, S0 = 99,  I0 = 0, E0 = 1 , R0 = 0,  days = 100,  pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
+model1 <- rSEIR(N0 = 100, S0 = 99,  I0 = 0, E0 = 1 , R0 = 0,
+                days = 100,  pars = c(1/12, 1, 1/4, 1/5, 0.3, 0.2, 0.7))
 model1
 print(model1)
 

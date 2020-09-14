@@ -49,7 +49,8 @@ A numeric matrix with 7 columns.  Row i contains the values of (t, S_t, E_t, I_t
 quarantined people, recover people, total number of people.
 }
 \examples{
-model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
+model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0, Q0 = 0, R0 = 0,
+                 days = 100,  pars = c(1/12, 1, 0.5, 0.15, 0.04, 0, 0, 1))
 model1
 print(model1)
 

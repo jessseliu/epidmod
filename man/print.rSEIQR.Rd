@@ -13,7 +13,8 @@
 \code{print} returns the basic information of simulated SEIQR model
 }
 \examples{
-model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0,  Q0 = 0, R0 = 0,  days = 100,  pars = c(1/12, 1, 1/4, 0.15, 1/5, 0.3, 0.2, 0.7))
+model1 <- rSEIQR(N0 = 100, S0 = 99, E0 = 1 ,I0 = 0,  Q0 = 0, R0 = 0,
+                 days = 100,  pars = c(1/12, 1, 1/4, 0.15, 1/5, 0.3, 0.2, 0.7))
 print(model1)
 
 }
